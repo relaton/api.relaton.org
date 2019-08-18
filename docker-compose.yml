@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  db:
+    image: postgres:11
+    ports:
+      - "5432:5432"
+
+  web:
+    build: .
+    command: /bin/sh -c "./entrypoint.sh"
+    ports:
+      - "3000:3000"
+
+    environment:
+      DATABASE_HOST: db
+      DATABASE_USERNAME: postgres
+
+    links:
+      - db
+
+    volumes:
+      - .:/relaton.org

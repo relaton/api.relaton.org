@@ -2,6 +2,8 @@
 
 ## Getting Started
 
+### Native development
+
 After you have cloned this repo, run this setup script to set up your machine
 with the necessary dependencies to run and test this app:
 
@@ -20,6 +22,31 @@ After setting up, you can run the application using [Heroku Local]:
 # or plain old
 bin/rails server
 ```
+
+### Development with docker
+
+If you prefer to run this application with docker, then you need to follow the
+following steps.
+
+1. Copy the environment variables
+
+```sh
+cp .samplle.env .env
+vim .env
+```
+
+2. Setup and Run the app
+
+```sh
+# setup / rebuild
+make setup
+
+# run - no rebuild
+make up
+```
+
+The makefile also includes couple of other target to run the test suite or
+console in those containers. Please check out the `Makefile` for more details
 
 ## Guidelines
 

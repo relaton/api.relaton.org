@@ -9,6 +9,7 @@ ruby "2.6.3"
 
 gem "autoprefixer-rails"
 gem "bootsnap", require: false
+gem "daemons"
 gem "delayed_job_active_record"
 gem "honeybadger"
 gem "oj"
@@ -22,7 +23,6 @@ gem "skylight"
 gem "simple_form"
 gem "sprockets", ">= 3.0.0"
 gem "title"
-gem "tzinfo-data", platforms: [:mingw, :x64_mingw, :mswin, :jruby]
 gem "uglifier"
 gem "rack-timeout", group: :production
 
