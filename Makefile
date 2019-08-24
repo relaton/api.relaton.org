@@ -6,6 +6,10 @@ up:
 down:
 	docker-compose down
 
+.PHONY: rebuild
+rebuild: setup
+	docker-compose up
+
 .PHONY: test
 test: rspec
 
@@ -19,5 +23,5 @@ console:
 
 .PHONY: setup
 setup:
-	docker-compose up --build
+	docker-compose build
 	docker-compose run web bin/rails db:setup
