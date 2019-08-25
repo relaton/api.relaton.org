@@ -13,7 +13,10 @@ module SystemTestHelper
 end
 
 RSpec.configure do |config|
+  config.include ApiHelpers
+  config.include RelatonHelper
   config.include SystemTestHelper, type: :system
+
   config.infer_base_class_for_anonymous_controllers = false
   config.infer_spec_type_from_file_location!
   config.use_transactional_fixtures = true

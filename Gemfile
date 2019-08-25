@@ -5,8 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby "2.6.3"
+ruby "2.6.4"
 
+gem "active_model_serializers", "~> 0.10.0"
 gem "autoprefixer-rails"
 gem "bootsnap", require: false
 gem "daemons"
@@ -18,6 +19,7 @@ gem "puma"
 gem "rack-canonical-host"
 gem "rails", "~> 5.2.3"
 gem "recipient_interceptor"
+gem "relaton-iso"
 gem "sassc-rails"
 gem "skylight"
 gem "simple_form"
