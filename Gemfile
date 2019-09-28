@@ -5,7 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby "2.6.4"
+ruby ENV["RUBY_VERSION"] || "2.6.4"
 
 gem "active_model_serializers", "~> 0.10.0"
 gem "autoprefixer-rails"

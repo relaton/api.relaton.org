@@ -2,6 +2,9 @@
 
 ## Getting Started
 
+![](https://github.com/relaton/relaton.org/workflows/GitHub%20CI/badge.svg)
+
+
 ### Native development
 
 After you have cloned this repo, run this setup script to set up your machine
