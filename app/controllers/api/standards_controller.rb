@@ -10,7 +10,7 @@ module Api
 
     def find_standard
       if params[:code] && standard
-        render(json: standard, status: :ok)
+        render(json: standard, format: params[:document_format], status: :ok)
       end
     end
 

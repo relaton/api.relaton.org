@@ -6,13 +6,17 @@ RSpec.describe "GET /api/standards" do
       standard = create(:standard, :with_document, code: "ISO 19115")
       stub_relaton_document(standard.code, standard.year)
 
-      get_api api_standard_path(code: standard.code, year: standard.year)
-      content = JSON.parse(response.body)
+      get_api api_standard_path(
+        code: standard.code,
+        year: standard.year,
+        document_format: "xml",
+      )
 
+      content = JSON.parse(response.body)
       expect(content["updated_at"]).not_to be_nil
       expect(content["code"]).to eq(standard.code)
       expect(content["type"]).to eq(standard.standard_type.upcase)
-      expect(content["document"]["xml"]).to include('<bibitem id="ISO19115-200')
+      expect(content["document"]).to include('<bibitem id="ISO19115-2003" type')
     end
   end
 
