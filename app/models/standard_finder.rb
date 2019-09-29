@@ -9,7 +9,7 @@ class StandardFinder
 
   def find
     build_standard_object(
-      finder_klass.find(code, year),
+      standard_finder_klass.find(code, year),
     )
   end
 
@@ -18,10 +18,6 @@ class StandardFinder
   end
 
   private
-
-  def finder_klass
-    finder_klasses[standard_key.to_sym]
-  end
 
   def build_standard_object(document)
     if document
@@ -34,11 +30,7 @@ class StandardFinder
     end
   end
 
-  def finder_klasses
-    { iso: Finders::IsoStandard }
-  end
-
-  def standard_key
-    @standard_key ||= code.split(" ").first.downcase
+  def standard_finder_klass
+    @standard_finder_klass ||= Finders::KlassFinder.find(code)
   end
 end
