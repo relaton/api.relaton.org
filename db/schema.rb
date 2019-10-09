@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_07_162442) do
+ActiveRecord::Schema.define(version: 2019_10_10_102606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_09_07_162442) do
     t.jsonb "document_in_json"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "expires_at"
     t.index ["code"], name: "index_standards_on_code"
     t.index ["document_number"], name: "index_standards_on_document_number"
   end

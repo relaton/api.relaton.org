@@ -15,7 +15,7 @@ module Api
     end
 
     def standard
-      @standard ||= Standard.find_or_fetch_by(
+      @standard ||= StandardFinder.find_or_fetch_by(
         code: params[:code], year: params[:year],
       )
     end
