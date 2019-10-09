@@ -2,14 +2,15 @@ class StandardFinder
   attr_reader :code, :year, :standard_type, :document_number,
     :document_in_xml, :document_in_hash
 
-  def initialize(code:, year: nil)
-    @code = code
+  def initialize(code:, year: nil, **options)
     @year = year
+    @options = options
+    @code = code.upcase
   end
 
   def find
     build_standard_object(
-      standard_finder_klass.find(code, year),
+      relaton.fetch(code.upcase, year&.to_s, options),
     )
   end
 
@@ -18,6 +19,12 @@ class StandardFinder
   end
 
   private
+
+  attr_reader :options
+
+  def relaton
+    @relaton ||= Relaton::Db.new(nil, nil)
+  end
 
   def build_standard_object(document)
     if document
@@ -28,9 +35,5 @@ class StandardFinder
 
       self
     end
-  end
-
-  def standard_finder_klass
-    @standard_finder_klass ||= Finders::KlassFinder.find(code)
   end
 end

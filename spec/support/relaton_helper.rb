@@ -1,10 +1,15 @@
+require "relaton_iso"
+
 module RelatonHelper
   def stub_relaton_document(code, year, options = {})
-    require "relaton_iso"
-
     allow(RelatonIso::IsoBibliography).to receive(:get).
       with(code, year.to_s, options).
       and_return(relaton_fixture_file(code, year))
+  end
+
+  def stub_relaton_invalid_document(code, year, options = {})
+    allow(RelatonIso::IsoBibliography).to receive(:get).
+      with(code, year.to_s, options).and_return(nil)
   end
 
   def relaton_fixture_file(code, year)

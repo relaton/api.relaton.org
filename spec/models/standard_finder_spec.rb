@@ -26,7 +26,7 @@ RSpec.describe StandardFinder do
         year = 2019
         code = "ISO 19115"
 
-        allow(Finders::IsoStandard).to receive(:find).and_return(nil)
+        stub_relaton_invalid_document(code, year)
         standard = StandardFinder.find_by(code: code, year: year)
 
         expect(standard).to be_nil
