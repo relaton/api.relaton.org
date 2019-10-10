@@ -8,7 +8,7 @@ class HomesController < ApplicationController
   def intro_message
     {
       status: :ok,
-      author: "Rebose Inc.",
+      author: "Ribose Inc.",
       message: "This is an API only application",
 
       links: {
