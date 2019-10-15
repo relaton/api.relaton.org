@@ -1,9 +1,50 @@
-# Relaton Service (relaton.org)
+# Relaton API
 
 ## Getting Started
 
 ![](https://github.com/relaton/relaton.org/workflows/GitHub%20CI/badge.svg)
 
+## Usage
+
+### Fetch a standard
+
+The `/api/standard` endpoint allow us to fetch any of the supported standards.
+
+**Request**
+
+```
+Method: GET
+Endpoint: /api/standard
+Content-Type: application/json
+Parameters: code, year, document_format
+
+Example: /api/standard?code=ISO 19011&year=2011&document_format=json
+```
+
+**Response**
+
+```
+Status: 200
+Content-Type: application/json
+Body:
+
+{
+  type: "ISO",
+  code: "ISO 19011",
+  document: {
+    id: "ISO19011-2011",
+    .............
+  },
+  updated_at: "2019-10-10T11:03:11Z"
+}
+```
+
+Note: In the underneath, it is using the [relaton
+library](https://github.com/relaton/relaton), so please check that documentation
+for all supported standards.
+
+
+## Development
 
 ### Native development
 
