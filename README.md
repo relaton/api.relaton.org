@@ -3,6 +3,10 @@
 ## Getting Started
 
 ![](https://github.com/relaton/relaton.org/workflows/GitHub%20CI/badge.svg)
+[![View performance data on
+Skylight](https://badges.skylight.io/rpm/PIVJdcAuqhzA.svg?token=BUfX6VJ06XPoc8ZDBC8h3U8JWszSRXyJGnMHTvYP2nE)](https://www.skylight.io/app/applications/PIVJdcAuqhzA)
+[![View performance data on
+Skylight](https://badges.skylight.io/typical/PIVJdcAuqhzA.svg?token=BUfX6VJ06XPoc8ZDBC8h3U8JWszSRXyJGnMHTvYP2nE)](https://www.skylight.io/app/applications/PIVJdcAuqhzA)
 
 ## Usage
 
