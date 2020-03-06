@@ -24,4 +24,4 @@ console:
 .PHONY: setup
 setup:
 	docker-compose build
-	docker-compose run web bin/rails db:setup
+	docker-compose run web bin/setup

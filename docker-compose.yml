@@ -6,6 +6,12 @@ services:
     ports:
       - "5432:5432"
 
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
   web:
     build: .
     command: /bin/sh -c "./entrypoint.sh"
@@ -21,3 +27,8 @@ services:
 
     volumes:
       - .:/relaton.org
+      - bundle:/bundle
+
+volumes:
+  bundle:
+  postgres-data:

@@ -1,4 +1,4 @@
-FROM ruby:2.6-slim-stretch
+FROM ruby:2.6.5-slim-stretch
 
 RUN apt-get update -qq && apt-get install -yy curl wget
 
@@ -15,11 +15,8 @@ RUN npm install yarn -g
 # Create app directory
 WORKDIR /relaton.org
 
-# Copy gemfile
-COPY Gemfile* ./
-
-# Install dependencies
-RUN bundle install
+# Set bundle path
+ENV BUNDLE_PATH /bundle
 
 # Copy the application
 COPY . .
