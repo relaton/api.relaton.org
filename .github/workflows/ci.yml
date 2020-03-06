@@ -28,25 +28,19 @@ jobs:
 
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: 2.6.3
+          ruby-version: 2.6.5
 
       - name: Install dependent libraries
         run: sudo apt-get install libpq-dev
 
       - name: Setup app with migrations
         run: ./bin/setup
-
-        # Currently action doesn't support 2.6.4, so this is tempory fix
-        # please remove this once github/actions has official support for 2.6.4
-        #
         env:
-          RUBY_VERSION: 2.6.3
           DATABASE_USERNAME: postgres
           DATABASE_PASSWORD: postgres
 
       - name: Run rspec tests
         run: ./bin/rspec spec
         env:
-          RUBY_VERSION: 2.6.3
           DATABASE_USERNAME: postgres
           DATABASE_PASSWORD: postgres
