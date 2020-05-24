@@ -1,4 +1,4 @@
-FROM ruby:2.6.5-slim-stretch
+FROM ruby:2.7-slim-buster
 
 RUN apt-get update -qq && apt-get install -yy curl wget
 

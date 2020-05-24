@@ -5,11 +5,11 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-ruby ENV["RUBY_VERSION"] || "2.6.5"
+ruby ENV["RUBY_VERSION"] || "2.7.1"
 
 gem "active_model_serializers", "~> 0.10.0"
 gem "autoprefixer-rails"
-gem "bootsnap", require: false
+gem "bootsnap", "~> 1.4.6", require: false
 gem "daemons"
 gem "delayed_job_active_record"
 gem "honeybadger"
