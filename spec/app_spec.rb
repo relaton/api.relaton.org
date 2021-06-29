@@ -5,8 +5,12 @@ describe Relaton::Api do
     let(:app) { subject }
 
     it "returns status 200" do
-      get "/api/v1/standard?code=ISO 19115-2&year=2019"
-      expect(last_response.status).to eq 200
+      VCR.use_cassette "fetch_s3" do
+        expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return("bucket").exactly(7).times
+        expect(ENV).to receive(:[]).and_call_original.at_least :once
+        get "/api/v1/fetch?code=ISO 19115-2&year=2019"
+        expect(last_response.status).to eq 200
+      end
     end
   end
 end

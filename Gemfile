@@ -4,11 +4,12 @@ source "https://rubygems.org"
 
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}" }
 
-gem "puma"
 gem "rack"
-gem "relaton"
+gem "relaton", "1.8.pre2"
 
 group :test do
   gem "rack-test"
   gem "rspec"
+  gem "vcr"
+  gem "webmock"
 end
