@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bucket.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso_19115_2_2019.
+    uri: https://bucket.s3.us-west.amazonaws.com/?list-type=2&prefix=cache/iso/iso_19115_2_2019.
     body:
       encoding: UTF-8
       string: ''
@@ -14,7 +14,7 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
       Host:
-      - bucket.s3.amazonaws.com
+      - bucket.s3.us-west.amazonaws.com
       X-Amz-Date:
       - 20210629T151812Z
       X-Amz-Content-Sha256:
@@ -49,11 +49,11 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_19115_2_2019.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
+        <ListBucketResult xmlns="http://s3.us-west.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_19115_2_2019.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
   recorded_at: Tue, 29 Jun 2021 15:18:13 GMT
 - request:
     method: get
-    uri: https://bucket.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso_19115_2_2019.
+    uri: https://bucket.s3.us-west.amazonaws.com/?list-type=2&prefix=cache/iso/iso_19115_2_2019.
     body:
       encoding: UTF-8
       string: ''
@@ -65,7 +65,7 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
       Host:
-      - bucket.s3.amazonaws.com
+      - bucket.s3.us-west.amazonaws.com
       X-Amz-Date:
       - 20210629T151813Z
       X-Amz-Content-Sha256:
@@ -100,11 +100,11 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_19115_2_2019.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
+        <ListBucketResult xmlns="http://s3.us-west.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_19115_2_2019.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
   recorded_at: Tue, 29 Jun 2021 15:18:14 GMT
 - request:
     method: get
-    uri: https://bucket.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso_19115_2_2019.
+    uri: https://bucket.s3.us-west.amazonaws.com/?list-type=2&prefix=cache/iso/iso_19115_2_2019.
     body:
       encoding: UTF-8
       string: ''
@@ -116,7 +116,7 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
       Host:
-      - bucket.s3.amazonaws.com
+      - bucket.s3.us-west.amazonaws.com
       X-Amz-Date:
       - 20210629T151814Z
       X-Amz-Content-Sha256:
@@ -151,7 +151,7 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_19115_2_2019.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
+        <ListBucketResult xmlns="http://s3.us-west.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_19115_2_2019.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
   recorded_at: Tue, 29 Jun 2021 15:18:15 GMT
 - request:
     method: get
@@ -330,7 +330,7 @@ http_interactions:
   recorded_at: Tue, 29 Jun 2021 15:18:20 GMT
 - request:
     method: head
-    uri: https://bucket.s3.amazonaws.com/cache/iso/version
+    uri: https://bucket.s3.us-west.amazonaws.com/cache/iso/version
     body:
       encoding: UTF-8
       string: ''
@@ -342,7 +342,7 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
       Host:
-      - bucket.s3.amazonaws.com
+      - bucket.s3.us-west.amazonaws.com
       X-Amz-Date:
       - 20210629T151820Z
       X-Amz-Content-Sha256:
@@ -383,7 +383,7 @@ http_interactions:
   recorded_at: Tue, 29 Jun 2021 15:18:21 GMT
 - request:
     method: put
-    uri: https://bucket.s3.amazonaws.com/cache/iso/iso_19115_2_2019.xml
+    uri: https://bucket.s3.us-west.amazonaws.com/cache/iso/iso_19115_2_2019.xml
     body:
       encoding: UTF-8
       string: |-
@@ -470,7 +470,7 @@ http_interactions:
       Content-Md5:
       - cB2noIXP+w21/JavwZxktA==
       Host:
-      - bucket.s3.amazonaws.com
+      - bucket.s3.us-west.amazonaws.com
       X-Amz-Date:
       - 20210629T151821Z
       X-Amz-Content-Sha256:
@@ -506,7 +506,7 @@ http_interactions:
   recorded_at: Tue, 29 Jun 2021 15:18:22 GMT
 - request:
     method: get
-    uri: https://bucket.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso_19115_2_2019.
+    uri: https://bucket.s3.us-west.amazonaws.com/?list-type=2&prefix=cache/iso/iso_19115_2_2019.
     body:
       encoding: UTF-8
       string: ''
@@ -518,7 +518,7 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
       Host:
-      - bucket.s3.amazonaws.com
+      - bucket.s3.us-west.amazonaws.com
       X-Amz-Date:
       - 20210629T151822Z
       X-Amz-Content-Sha256:
@@ -553,11 +553,11 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_19115_2_2019.</Prefix><KeyCount>1</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>cache/iso/iso_19115_2_2019.xml</Key><LastModified>2021-06-29T15:18:23.000Z</LastModified><ETag>&quot;701da7a085cffb0db5fc96afc19c64b4&quot;</ETag><Size>2963</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+        <ListBucketResult xmlns="http://s3.us-west.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_19115_2_2019.</Prefix><KeyCount>1</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>cache/iso/iso_19115_2_2019.xml</Key><LastModified>2021-06-29T15:18:23.000Z</LastModified><ETag>&quot;701da7a085cffb0db5fc96afc19c64b4&quot;</ETag><Size>2963</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
   recorded_at: Tue, 29 Jun 2021 15:18:23 GMT
 - request:
     method: get
-    uri: https://bucket.s3.amazonaws.com/cache/iso/iso_19115_2_2019.xml
+    uri: https://bucket.s3.us-west.amazonaws.com/cache/iso/iso_19115_2_2019.xml
     body:
       encoding: UTF-8
       string: ''
@@ -569,7 +569,7 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
       Host:
-      - bucket.s3.amazonaws.com
+      - bucket.s3.us-west.amazonaws.com
       X-Amz-Date:
       - 20210629T151823Z
       X-Amz-Content-Sha256:
