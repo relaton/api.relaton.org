@@ -33,4 +33,4 @@ jobs:
           bundle install --jobs 4 --retry 3
 
       - name: Run rspec tests
-        run: bundle exec spec
+        run: bundle exec rspec
