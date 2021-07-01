@@ -1,40 +1,70 @@
-require "rack"
 require "./finder"
 
 module Relaton
   class Api
-    def call(env)
-      req = Rack::Request.new env
-      if req.get? && req.path == "/api/v1/fetch"
-        return bad_request "Parametr 'code' is required." unless req.params["code"]
+    class << self
+      def handler(event:, context: {})
+        if event["httpMethod"] == "GET" && event["path"] == "/api/v1/document"
+          unless event["queryStringParameters"]["code"]
+            return bad_request "Parametr 'code' is required."
+          end
 
-        fetch req
-      else not_found "Resource doesn't exist."
+          fetch event
+        else not_found "Resource doesn't exist."
+        end
       end
-    end
 
-    private
+      private
 
-    def fetch(req)
-      item = Relaton::Finder.instance.fetch(*params(req))
-      return not_found "Document not found" unless item
+      # def headers
+      #   # cors_origin = ENV["DEFAULT_ORIGIN"]
+      #   # input_origin = event.fetch("headers", {}).fetch("origin", "")
 
-      [200, { "Content-Type" => "text/xml" }, [item.to_xml(bibdata: true)]]
-    end
+      #   # if /#{ENV["CORS_ORIGIN_REGEX"]}/.match? input_origin
+      #   #   cors_origin = input_origin
+      #   # end
 
-    def params(req)
-      opts = req.params.each_with_object({}) do |(k, v), o|
-        %w[all_parts keep_year].include?(k) && o[k.to_sym] = v
+      #   {
+      #     "Access-Control-Allow-Origin" => "*",
+      #     "Access-Control-Allow-Headers" => "Content-Type",
+      #     "Access-Control-Allow-Methods" => "GET",
+      #   }
+      # end
+
+      def fetch(env)
+        item = Relaton::Finder.instance.fetch(*params(env))
+        return not_found "Document not found." unless item
+
+        {
+          status: 200,
+          headers: { "Content-Type" => "text/xml" },
+          body: item.to_xml(bibdata: true),
+        }
       end
-      [req.params["code"], req.params["year"], opts]
-    end
 
-    def bad_request(msg)
-      [400, { "Content-Type" => "text/plain" }, ["Bad request. #{msg}"]]
-    end
+      def params(env)
+        allowed_params = %w[all_parts keep_year]
+        opts = env["queryStringParameters"].each_with_object({}) do |(k, v), o|
+          allowed_params.include?(k) && o[k.to_sym] = v
+        end
+        [
+          env["queryStringParameters"]["code"],
+          env["queryStringParameters"]["year"],
+          opts,
+        ]
+      end
 
-    def not_found(msg)
-      [404, { "Content-Type" => "text/plain" }, [msg]]
+      def bad_request(msg)
+        {
+          status: 400,
+          headers: { "Content-Type" => "text/plain" },
+          body: "Bad request. #{msg}",
+        }
+      end
+
+      def not_found(msg)
+        { status: 404, headers: { "Content-Type" => "text/plain" }, body: msg }
+      end
     end
   end
 end

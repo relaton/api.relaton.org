@@ -1,0 +1,405 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://bucket.s3.us-west.amazonaws.com/?list-type=2&prefix=cache/iso/iso_123456.
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Host:
+      - bucket.s3.us-west.amazonaws.com
+      X-Amz-Date:
+      - 20210701T103724Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210701/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=afa70ab9bd8faaffb8fd2cdc22b095341a5fabf423b429dd9ad6f3e404928cc4
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - I5q89KMCIWi/EW6rYD3eShk/1jR+dDgTifeN8yCX3Hs6Al8ZwAyWOBSanpvme5um2u291GDcuk4=
+      X-Amz-Request-Id:
+      - TZ1QMPP9QKRSWK0M
+      Date:
+      - Thu, 01 Jul 2021 10:37:26 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_123456.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
+  recorded_at: Thu, 01 Jul 2021 10:37:25 GMT
+- request:
+    method: get
+    uri: https://bucket.s3.us-west.amazonaws.com/?list-type=2&prefix=cache/iso/iso_123456.
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Host:
+      - bucket.s3.us-west.amazonaws.com
+      X-Amz-Date:
+      - 20210701T103725Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210701/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=6e9ed0849ca3c2f9a1916a7b373166fd32dd9f8fc32502ed76d4ad13b74895b4
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - WaOAVB6NOYepUmAuxRINipxfCysY188g7CeTxsCy3i6t9VKcpiiGIbYCLEOz1XSZpK2IZANGtbM=
+      X-Amz-Request-Id:
+      - TZ1Q0EEWF1CCGVXT
+      Date:
+      - Thu, 01 Jul 2021 10:37:26 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_123456.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
+  recorded_at: Thu, 01 Jul 2021 10:37:25 GMT
+- request:
+    method: get
+    uri: https://bucket.s3.us-west.amazonaws.com/?list-type=2&prefix=cache/iso/iso_123456.
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Host:
+      - bucket.s3.us-west.amazonaws.com
+      X-Amz-Date:
+      - 20210701T103725Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210701/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=6e9ed0849ca3c2f9a1916a7b373166fd32dd9f8fc32502ed76d4ad13b74895b4
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - hVlf23r9pc5aB8Ctb2G0S0OyCI0pdYjrnQX200dnVGXtxu9l6yY4BAPRNHXsaErJhc2Olz9F5n0=
+      X-Amz-Request-Id:
+      - XYZ3QG54JF5644WE
+      Date:
+      - Thu, 01 Jul 2021 10:37:27 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_123456.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
+  recorded_at: Thu, 01 Jul 2021 10:37:26 GMT
+- request:
+    method: get
+    uri: https://www.iso.org/cms/render/live/en/sites/isoorg.advancedSearch.do?docNumber=123456&status=ENT_ACTIVE,ENT_PROGRESS,ENT_INACTIVE,ENT_DELETED
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept:
+      - application/json, text/plain, */*
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: ''
+    headers:
+      Expires:
+      - Wed, 09 May 1979 05:30:00 GMT
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, proxy-revalidate, max-age=0
+      Pragma:
+      - no-cache
+      Set-Cookie:
+      - BIGipServerpool_prod_iso_www-jahia=713576842.36895.0000; path=/; Httponly;
+        Secure
+      - JSESSIONID=307AA83564E339DB8CA44F2829BE4697; Path=/; Secure; HttpOnly
+      Content-Type:
+      - application/json;charset=UTF-8
+      Content-Length:
+      - '16'
+      Date:
+      - Thu, 01 Jul 2021 10:37:26 GMT
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: '{"standards":[]}'
+  recorded_at: Thu, 01 Jul 2021 10:37:27 GMT
+- request:
+    method: head
+    uri: https://bucket.s3.us-west.amazonaws.com/cache/iso/version
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Host:
+      - bucket.s3.us-west.amazonaws.com
+      X-Amz-Date:
+      - 20210701T103727Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210701/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=d36fcc69dec5ae1c0522c4375f8ab52b4dc14c749dc046f6d35d68d0f99569f1
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - 4+sA7UIjJqyLl0T0XRd+5BCP83hUkKanebqyWwGiY+V5nVKfMMBnGq5D7oMTBj5j99oqUX8BDcE=
+      X-Amz-Request-Id:
+      - JRZ7AKJV2TAWT4MH
+      Date:
+      - Thu, 01 Jul 2021 10:37:28 GMT
+      Last-Modified:
+      - Fri, 25 Jun 2021 10:08:48 GMT
+      Etag:
+      - '"af6f13de33147d21d014334cf8e9a9ef"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - ''
+      Server:
+      - AmazonS3
+      Content-Length:
+      - '32'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 01 Jul 2021 10:37:27 GMT
+- request:
+    method: put
+    uri: https://bucket.s3.us-west.amazonaws.com/cache/iso/iso_123456.notfound
+    body:
+      encoding: UTF-8
+      string: not_found 2021-07-01
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - 2lA4ebSqYBeKMAykMZ4yrQ==
+      Host:
+      - bucket.s3.us-west.amazonaws.com
+      X-Amz-Date:
+      - 20210701T103727Z
+      X-Amz-Content-Sha256:
+      - eba3634c5b1cef2e88b01c43be90cf7192f568d45b847cbb5cce62e23762c374
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210701/us-east-1/s3/aws4_request,
+        SignedHeaders=content-md5;content-type;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=d7487ca951e5538bc037f58e36679b2f53ef3125d2470a4c015c47029ed325e8
+      Content-Length:
+      - '20'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - 7sIR3t80rHHfrhOy37uJmq4nU3N8o3slYsLzixui61BFJ80UCLFcFQSMGDGtR3d3A8d+2rFdAOk=
+      X-Amz-Request-Id:
+      - AYGW939E0GA76N3S
+      Date:
+      - Thu, 01 Jul 2021 10:37:29 GMT
+      Etag:
+      - '"da503879b4aa60178a300ca4319e32ad"'
+      Server:
+      - AmazonS3
+      Content-Length:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 01 Jul 2021 10:37:28 GMT
+- request:
+    method: get
+    uri: https://bucket.s3.us-west.amazonaws.com/?list-type=2&prefix=cache/iso/iso_123456.
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Host:
+      - bucket.s3.us-west.amazonaws.com
+      X-Amz-Date:
+      - 20210701T103728Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210701/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=834e0268a8fc39fe2593f8cbd43e928fa1d58d560604aafd732646e5a426c59d
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - hSJYKvX8oFwp0U/ZJ5xur/HdfNLiMFzE1LLoFCYHeDOu4ZhzmabTf4BOQRtMlztKcTEyV6LY4E8=
+      X-Amz-Request-Id:
+      - W0AY8ABMM2FVRS6P
+      Date:
+      - Thu, 01 Jul 2021 10:37:30 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso_123456.</Prefix><KeyCount>1</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>cache/iso/iso_123456.notfound</Key><LastModified>2021-07-01T10:37:29.000Z</LastModified><ETag>&quot;da503879b4aa60178a300ca4319e32ad&quot;</ETag><Size>20</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+  recorded_at: Thu, 01 Jul 2021 10:37:29 GMT
+- request:
+    method: get
+    uri: https://bucket.s3.us-west.amazonaws.com/cache/iso/iso_123456.notfound
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.115.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Host:
+      - bucket.s3.us-west.amazonaws.com
+      X-Amz-Date:
+      - 20210701T103729Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210701/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=59bec07d4c63651e653e314f3b483c628de2c34173cc5676dd920fa046a5065e
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - JQzEkPfBR7KkkTfbggs+/8IE38QvNG7Olxg+qAqhZsriKC0yt2CUI8vDVFyqv0yev79shgDQUyc=
+      X-Amz-Request-Id:
+      - DZRMH3KVHFD2K93C
+      Date:
+      - Thu, 01 Jul 2021 10:37:31 GMT
+      Last-Modified:
+      - Thu, 01 Jul 2021 10:37:29 GMT
+      Etag:
+      - '"da503879b4aa60178a300ca4319e32ad"'
+      Accept-Ranges:
+      - bytes
+      Content-Type:
+      - text/plain; charset=utf-8
+      Server:
+      - AmazonS3
+      Content-Length:
+      - '20'
+    body:
+      encoding: UTF-8
+      string: not_found 2021-07-01
+  recorded_at: Thu, 01 Jul 2021 10:37:30 GMT
+recorded_with: VCR 6.0.0
