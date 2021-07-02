@@ -1,0 +1,33 @@
+name: on-gem-release
+
+on:
+  repository_dispatch:
+    types: [ interscript/interscript ]
+
+env:
+  GITHUB_PUSH_TOKEN: ${{ secrets.INTERSCRIPT_CI_PAT }}
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    if: startsWith(github.event.client_payload.ref, 'refs/tags/v')
+    steps:
+      - run: echo "disabled for now"
+#    - uses: actions/checkout@v1
+
+#    - name: Setup env-vars
+#      run: |
+#        REF="${{ github.event.client_payload.ref }}"
+#        echo "INTERSCRIPT_VERSION=${REF#refs/*/v}" >> $GITHUB_ENV
+#
+#    - name: Create API Release
+#      uses: actions/create-release@v1
+#      env:
+#        GITHUB_TOKEN: ${{env.GITHUB_PUSH_TOKEN}}
+#      with:
+#        tag_name: v${{env.INTERSCRIPT_VERSION}}
+#        release_name: Release v${{env.INTERSCRIPT_VERSION}}
+#        body: Auto release API v${{env.INTERSCRIPT_VERSION}} by @interscript-ci
+#        draft: false
+#        prerelease: false
