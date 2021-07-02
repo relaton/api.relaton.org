@@ -44,8 +44,12 @@ jobs:
           gem install bundler
           bundle config set path "./vendor/bundle"
           bundle install --without=development --jobs 4 --retry 3
-      - name: make aws zip
-        run: zip -r ${AWSL_SRC_ZIP} git -x '*.git*' -x '*spec*' -x '*coverage*'
+          zip -r ${AWSL_SRC_ZIP} git \
+            -x '*.git*' \
+            -x '*spec*' \
+            -x '*Gemfile*' \
+            -x '*coverage*' \
+            -x '*.bundle*'
 
       - name: upload lambda layer to current release
         uses: softprops/action-gh-release@v1
