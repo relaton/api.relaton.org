@@ -45,7 +45,7 @@ jobs:
           zip -r ${AWSL_SRC_ZIP} vendor lib
 
       - name: upload lambda layer to current release
-        uses: softprops/action-gh-release@v1.0.5
+        uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{env.RELEASE_TAG_NAME}}
           files: |
