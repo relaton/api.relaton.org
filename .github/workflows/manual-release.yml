@@ -40,11 +40,11 @@ jobs:
 
       - name: make new release
         uses: actions/create-release@v1
-        env:
+        env: # must use push-token to trigger on-release workflow
           GITHUB_TOKEN: ${{env.GITHUB_PUSH_TOKEN}}
         with:
           tag_name: ${{env.API_TAG_NAME}}
-          release_name: ${{env.API_TAG_NAME}}
+          release_name: Release API for Relation Gem v${{env.GEM_VERSION}}
           body: for Relation Gem v${{env.GEM_VERSION}}
           draft: false
           prerelease: false

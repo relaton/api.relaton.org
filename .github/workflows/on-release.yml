@@ -45,7 +45,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{env.RELEASE_TAG_NAME}}
-          name: ${{env.RELEASE_NAME}}
           files: |
             ${{env.AWSL_SRC_ZIP}}
 
