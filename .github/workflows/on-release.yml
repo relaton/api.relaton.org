@@ -11,17 +11,17 @@ env:
 jobs:
   build-release:
     runs-on: ubuntu-latest
-    if: startsWith(github.event.release.name, 'Release API for Relation Gem')
+    if: contains(github.event.release.body, 'for Relation Gem v')
     steps:
       - uses: actions/checkout@v2
 
       - name: setup env vars
         run: |
-          RELEASE_NAME="${{github.event.release.name}}"
-          echo "RELEASE_NAME=$RELEASE_NAME" >> ${GITHUB_ENV}
+          RELEASE_BODY="${{github.event.release.body}}"
+          echo "RELEASE_BODY=$RELEASE_BODY" >> ${GITHUB_ENV}
           RELEASE_TAG_NAME="${{github.event.release.tag_name}}"
           echo "RELEASE_TAG_NAME=$RELEASE_TAG_NAME" >> ${GITHUB_ENV}
-          GEM_VERSION=$(echo "$RELEASE_NAME" | grep -Po '(?<=v)[^;]+')
+          GEM_VERSION=$(echo "$RELEASE_BODY" | grep -Po '(?<=v)[^;]+')
           echo "GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
           echo "RELATION_GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
 
@@ -43,10 +43,9 @@ jobs:
           zip -r ${AWSL_SRC_ZIP} vendor lib
 
       - name: upload lambda layer to current release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v1.0.5
         with:
           tag_name: ${{env.RELEASE_TAG_NAME}}
-          release_name: ${{env.RELEASE_NAME}}
           files: |
             ${{env.AWSL_SRC_ZIP}}
 
