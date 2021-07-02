@@ -14,6 +14,8 @@ jobs:
     if: contains(github.event.release.body, 'for Relation Gem v')
     steps:
       - uses: actions/checkout@v2
+        with:
+          path: git
 
       - name: setup env vars
         run: |
@@ -25,7 +27,7 @@ jobs:
           echo "GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
           echo "RELATION_GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
 
-          AWS_LAMBDA="${GITHUB_WORKSPACE}/../AWS_LAMBDA"
+          AWS_LAMBDA="${GITHUB_WORKSPACE}/AWS_LAMBDA"
           mkdir -p "${AWS_LAMBDA}"
           echo "AWS_LAMBDA=$AWS_LAMBDA" >> ${GITHUB_ENV}
           echo "AWSL_SRC_ZIP=${AWS_LAMBDA}/aws-lambda-src.zip" >> ${GITHUB_ENV}
@@ -34,13 +36,16 @@ jobs:
         uses: ruby/setup-ruby@v1.75.0
         with:
           bundler-cache: false
+          ruby-version: 2.7
 
       - name: build "-api" source
+        working-directory: git
         run: |
           gem install bundler
           bundle config set path "./vendor/bundle"
           bundle install --without=development --jobs 4 --retry 3
-          zip -jr ${AWSL_SRC_ZIP} ${GITHUB_WORKSPACE} -x '*.git*' -x '*spec*' -x '*coverage*'
+      - name: make aws zip
+        run: zip -jr ${AWSL_SRC_ZIP} git -x '*.git*' -x '*spec*' -x '*coverage*'
 
       - name: upload lambda layer to current release
         uses: softprops/action-gh-release@v1
