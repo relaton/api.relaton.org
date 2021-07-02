@@ -1,4 +1,4 @@
-require "./finder"
+require_relative "finder"
 
 module Relaton
   class Api
