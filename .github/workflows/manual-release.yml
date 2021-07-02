@@ -14,7 +14,7 @@ on:
         description: Relaton Gem version that published to "rubygems.org"
 
 env:
-  GITHUB_PUSH_TOKEN: ${{ secrets.GITHUB_PUSH_PAT }}
+  GITHUB_PUSH_TOKEN: ${{ secrets.RELATON_CI_PAT }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   API_VERSION: ${{github.event.inputs.api_version}}

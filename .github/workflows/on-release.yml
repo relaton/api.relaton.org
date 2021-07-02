@@ -5,7 +5,7 @@ on:
     types: [ published ]
 
 env:
-  GITHUB_PUSH_TOKEN: ${{ secrets.GITHUB_PUSH_PAT }}
+  GITHUB_PUSH_TOKEN: ${{ secrets.RELATON_CI_PAT }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
