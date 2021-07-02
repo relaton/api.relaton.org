@@ -11,6 +11,7 @@ env:
 jobs:
   build-release:
     runs-on: ubuntu-latest
+    if: startsWith(github.event.release.name, 'Release API for Relation Gem')
     steps:
       - uses: actions/checkout@v2
 
@@ -45,6 +46,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{env.RELEASE_TAG_NAME}}
+          release_name: ${{env.RELEASE_NAME}}
           files: |
             ${{env.AWSL_SRC_ZIP}}
 
