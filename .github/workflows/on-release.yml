@@ -40,6 +40,8 @@ jobs:
           gem install bundler
           bundle config set path "./vendor/bundle"
           bundle install --without=development --jobs 4 --retry 3
+          mkdir -p ./lib
+          cp *.rb ./lib
           zip -r ${AWSL_SRC_ZIP} vendor lib
 
       - name: upload lambda layer to current release
