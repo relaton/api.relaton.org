@@ -13,10 +13,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: setup ruby+install
-        uses: ruby/setup-ruby@v1.75.0
-        with:
-          bundler-cache: true
 
       - name: setup env vars
         run: |
@@ -26,11 +22,17 @@ jobs:
           echo "RELEASE_TAG_NAME=$RELEASE_TAG_NAME" >> ${GITHUB_ENV}
           GEM_VERSION=$(echo "$RELEASE_NAME" | grep -Po '(?<=v)[^;]+')
           echo "GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
+          echo "RELATION_GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
 
           AWS_LAMBDA="${GITHUB_WORKSPACE}/AWS_LAMBDA"
           mkdir -p "${AWS_LAMBDA}"
           echo "AWS_LAMBDA=${GITHUB_WORKSPACE}/AWS_LAMBDA" >> ${GITHUB_ENV}
           echo "AWSL_SRC_ZIP=${AWS_LAMBDA}/aws-lambda-src.zip" >> ${GITHUB_ENV}
+
+      - name: setup ruby+install
+        uses: ruby/setup-ruby@v1.75.0
+        with:
+          bundler-cache: false
 
       - name: build "-api" source
         run: |
