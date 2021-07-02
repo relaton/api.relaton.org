@@ -25,9 +25,9 @@ jobs:
           echo "GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
           echo "RELATION_GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
 
-          AWS_LAMBDA="${GITHUB_WORKSPACE}/AWS_LAMBDA"
+          AWS_LAMBDA="${GITHUB_WORKSPACE}/../AWS_LAMBDA"
           mkdir -p "${AWS_LAMBDA}"
-          echo "AWS_LAMBDA=${GITHUB_WORKSPACE}/AWS_LAMBDA" >> ${GITHUB_ENV}
+          echo "AWS_LAMBDA=$AWS_LAMBDA" >> ${GITHUB_ENV}
           echo "AWSL_SRC_ZIP=${AWS_LAMBDA}/aws-lambda-src.zip" >> ${GITHUB_ENV}
 
       - name: setup ruby+install
