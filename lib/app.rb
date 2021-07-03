@@ -18,6 +18,7 @@ module Relaton
         else not_found "Resource doesn't exist."
         end
       rescue => e
+        puts "Execution error!"
         puts e.message
         puts e.backtrace
       end
