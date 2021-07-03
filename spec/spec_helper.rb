@@ -10,7 +10,7 @@ SimpleCov.start do
   add_filter "/spec/"
 end
 
-require "./app"
+require "./lib/app"
 
 ENV["AWS_BUCKET"] = "bucket"
 ENV["AWS_REGION"] = "us-west"
