@@ -51,7 +51,7 @@ module Relaton
         puts "123 XML: #{xml[0..20]}"
 
         {
-          status: 200,
+          statusCode: 200,
           headers: { "Content-Type" => "text/xml" },
           body: xml,
         }

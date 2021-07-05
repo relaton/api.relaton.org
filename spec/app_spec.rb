@@ -13,7 +13,7 @@ describe Relaton::Api do
           },
         }
         resp = Relaton::Api.handler event: event
-        expect(resp[:status]).to eq 200
+        expect(resp[:statusCode]).to eq 200
         expect(resp[:headers]["Content-Type"]).to eq "text/xml"
         expect(resp[:body]).to include "<docnumber>19115</docnumber>"
       end
