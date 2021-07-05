@@ -45,9 +45,11 @@ module Relaton
 
         item = Relaton::Finder.instance.fetch(*params(env))
 
-        puts "123 after Relaton::Finder.instance.fetch"
+        puts "123 after Relaton::Finder.instance.fetch. Item: #{item.class}"
 
         return not_found "Document not found." unless item
+
+        puts "123 before respond. Item: #{item.id}"
 
         {
           status: 200,
