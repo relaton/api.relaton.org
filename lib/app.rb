@@ -41,32 +41,27 @@ module Relaton
       # end
 
       def fetch(env)
-        puts "123 app.fetch"
-
         item = Relaton::Finder.instance.fetch(*params(env))
-
-        puts "123 after Relaton::Finder.instance.fetch. Item: #{item.class}"
-
         return not_found "Document not found." unless item
 
         puts "123 before respond. Item: #{item.id}"
 
+        xml = item.to_xml bibdata: true
+
+        puts "123 XML: #{xml[0..20]}"
+
         {
           status: 200,
           headers: { "Content-Type" => "text/xml" },
-          body: item.to_xml(bibdata: true),
+          body: xml,
         }
       end
 
       def params(env)
-        puts "123 call app.params"
-
         allowed_params = %w[all_parts keep_year]
         opts = env["queryStringParameters"].each_with_object({}) do |(k, v), o|
           allowed_params.include?(k) && o[k.to_sym] = v
         end
-
-        puts "123 apfer call env.each_with_object"
 
         [
           env["queryStringParameters"]["code"],
@@ -76,7 +71,6 @@ module Relaton
       end
 
       def bad_request(msg)
-        puts "123 sending bad_request"
         {
           status: 400,
           headers: { "Content-Type" => "text/plain" },
@@ -85,7 +79,6 @@ module Relaton
       end
 
       def not_found(msg)
-        puts "123 sending not_found"
         { status: 404, headers: { "Content-Type" => "text/plain" }, body: msg }
       end
     end
