@@ -31,6 +31,7 @@ jobs:
           mkdir -p "${AWS_LAMBDA}"
           echo "AWS_LAMBDA=$AWS_LAMBDA" >> ${GITHUB_ENV}
           echo "AWSL_SRC_ZIP=${AWS_LAMBDA}/aws-lambda-src.zip" >> ${GITHUB_ENV}
+          echo "AWSL_LAYER_ZIP=${AWS_LAMBDA}/aws-lambda-layer.zip" >> ${GITHUB_ENV}
 
       - name: setup ruby+install
         uses: ruby/setup-ruby@v1.75.0
@@ -41,15 +42,13 @@ jobs:
       - name: build "-api" source
         working-directory: git
         run: |
-          gem install bundler
-          bundle config set path "./vendor/bundle"
-          bundle install --without=development --jobs 4 --retry 3
-          zip -r ${AWSL_SRC_ZIP} . \
-            -x '*.git*' \
-            -x '*spec*' \
-            -x '*Gemfile*' \
-            -x '*coverage*' \
-            -x '*.bundle*'
+          zip -r ${AWSL_SRC_ZIP} lib
+
+      - name: build "-layer"
+        working-directory: .github/awsl-layer-docker
+        run: |
+          build.sh
+          cp libs.zip $AWSL_LAYER_ZIP
 
       - name: upload lambda layer to current release
         uses: softprops/action-gh-release@v1
@@ -57,6 +56,7 @@ jobs:
           tag_name: ${{env.RELEASE_TAG_NAME}}
           files: |
             ${{env.AWSL_SRC_ZIP}}
+            ${{env.AWSL_LAYER_ZIP}}
 
 #      - name: dispatch "infrastructure-lambda-api"
 #        uses: peter-evans/repository-dispatch@v1

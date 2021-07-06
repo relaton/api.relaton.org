@@ -3,3 +3,6 @@ coverage/
 lcache/
 gcache/
 .rubocop-https---raw-githubusercontent-com-riboseinc-oss-guides-master-ci-rubocop-yml
+
+.github/awsl-layer-docker/Gemfile
+.github/awsl-layer-docker/libs*

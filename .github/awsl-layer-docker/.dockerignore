@@ -1,0 +1,9 @@
+## repo files/folders
+libs
+
+## OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+build.sh
+libs.zip
