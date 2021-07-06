@@ -47,7 +47,7 @@ jobs:
       - name: build "-layer"
         working-directory: .github/awsl-layer-docker
         run: |
-          build.sh
+          bash build.sh
           cp libs.zip $AWSL_LAYER_ZIP
 
       - name: upload lambda layer to current release
