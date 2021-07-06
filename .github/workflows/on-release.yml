@@ -47,6 +47,7 @@ jobs:
       - name: build "-layer"
         working-directory: .github/awsl-layer-docker
         run: |
+          ls -all
           bash build.sh
           cp libs.zip $AWSL_LAYER_ZIP
 
