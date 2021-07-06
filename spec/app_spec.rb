@@ -34,17 +34,17 @@ describe Relaton::Api do
         end
       end
 
-      # it "resource doesn't exist" do
-      #   event = {
-      #     "httpMethod" => "GET",
-      #     "path" => "/api/v1/fetch",
-      #     "queryStringParameters" => { "code" => "ISO 123456" },
-      #   }
-      #   resp = Relaton::Api.handler event: event
-      #   expect(resp[:status]).to eq 404
-      #   expect(resp[:headers]["Content-Type"]).to eq "text/plain"
-      #   expect(resp[:body]).to eq "Resource doesn't exist."
-      # end
+      it "resource doesn't exist" do
+        event = {
+          "httpMethod" => "GET",
+          "path" => "/api/v1/fetch",
+          "queryStringParameters" => { "code" => "ISO 123456" },
+        }
+        resp = Relaton::Api.handler event: event
+        expect(resp[:status]).to eq 404
+        expect(resp[:headers]["Content-Type"]).to eq "text/plain"
+        expect(resp[:body]).to eq "Resource doesn't exist."
+      end
     end
 
     it "returns status 400" do
