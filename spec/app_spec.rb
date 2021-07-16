@@ -1,5 +1,4 @@
 describe Relaton::Api do
-
   context "GET standard" do
     let(:app) { subject }
 
@@ -58,5 +57,15 @@ describe Relaton::Api do
       expect(resp[:headers]["Content-Type"]).to eq "text/plain"
       expect(resp[:body]).to eq "Bad request. Parametr 'code' is required."
     end
+  end
+
+  it "log error" do
+    event = {
+      "httpMethod" => "GET",
+      "path" => "/api/v1/document",
+      "queryStringParameters" => { "code" => "ISO 123456" },
+    }
+    expect(subject.class).to receive(:fetch).and_raise SocketError
+    expect { Relaton::Api.handler event: event }.to output(/Execution error!/).to_stdout
   end
 end
