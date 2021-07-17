@@ -1,6 +1,15 @@
 describe Relaton::Api do
   context "GET standard" do
-    let(:app) { subject }
+    it "Returns version" do
+      event = {
+        "httpMethod" => "GET",
+        "path" => "/api/v1/version",
+      }
+      resp = Relaton::Api.handler event: event
+      expect(resp[:statusCode]).to eq 200
+      expect(resp[:headers]["Content-Type"]).to eq "text/plain"
+      expect(resp[:body]).to include "Version"
+    end
 
     it "returns status 200" do
       VCR.use_cassette "fetch_s3" do
@@ -27,7 +36,7 @@ describe Relaton::Api do
             "queryStringParameters" => { "code" => "ISO 123456" },
           }
           resp = Relaton::Api.handler event: event
-          expect(resp[:status]).to eq 404
+          expect(resp[:statusCode]).to eq 404
           expect(resp[:headers]["Content-Type"]).to eq "text/plain"
           expect(resp[:body]).to eq "Document not found."
         end
@@ -40,7 +49,7 @@ describe Relaton::Api do
           "queryStringParameters" => { "code" => "ISO 123456" },
         }
         resp = Relaton::Api.handler event: event
-        expect(resp[:status]).to eq 404
+        expect(resp[:statusCode]).to eq 404
         expect(resp[:headers]["Content-Type"]).to eq "text/plain"
         expect(resp[:body]).to eq "Resource doesn't exist."
       end
@@ -53,7 +62,7 @@ describe Relaton::Api do
         "queryStringParameters" => { "year" => "2019" },
       }
       resp = Relaton::Api.handler event: event
-      expect(resp[:status]).to eq 400
+      expect(resp[:statusCode]).to eq 400
       expect(resp[:headers]["Content-Type"]).to eq "text/plain"
       expect(resp[:body]).to eq "Bad request. Parametr 'code' is required."
     end
