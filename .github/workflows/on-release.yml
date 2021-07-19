@@ -59,14 +59,14 @@ jobs:
             ${{env.AWSL_SRC_ZIP}}
             ${{env.AWSL_LAYER_ZIP}}
 
-#      - name: dispatch "infrastructure-lambda-api"
-#        uses: peter-evans/repository-dispatch@v1
-#        with:
-#          token: ${{ env.GITHUB_PUSH_TOKEN }}
-#          repository: interscript/infrastructure-lambda-api
-#          event-type: ${{ github.repository }}
-#          client-payload: >-
-#            {
-#              "workflow": "on-api-release.yml",
-#              "interscript_api_tag_name": "${{env.RELEASE_TAG_NAME}}"
-#            }
+      - name: dispatch "infrastructure-lambda-api"
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ env.GITHUB_PUSH_TOKEN }}
+          repository: relaton/infrastructure-lambda-api
+          event-type: ${{ github.repository }}
+          client-payload: >-
+            {
+              "workflow": "on-api-release.yml",
+              "api_tag_name": "${{env.RELEASE_TAG_NAME}}"
+            }

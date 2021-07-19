@@ -2,7 +2,7 @@ name: on-gem-release
 
 on:
   repository_dispatch:
-    types: [ interscript/interscript ]
+    types: [ relaton/api.relaton.org ]
 
 env:
   GITHUB_PUSH_TOKEN: ${{ secrets.RELATON_CI_PAT }}
@@ -19,15 +19,15 @@ jobs:
 #    - name: Setup env-vars
 #      run: |
 #        REF="${{ github.event.client_payload.ref }}"
-#        echo "INTERSCRIPT_VERSION=${REF#refs/*/v}" >> $GITHUB_ENV
+#        echo "API_VERSION=${REF#refs/*/v}" >> $GITHUB_ENV
 #
 #    - name: Create API Release
 #      uses: actions/create-release@v1
 #      env:
 #        GITHUB_TOKEN: ${{env.GITHUB_PUSH_TOKEN}}
 #      with:
-#        tag_name: v${{env.INTERSCRIPT_VERSION}}
-#        release_name: Release v${{env.INTERSCRIPT_VERSION}}
-#        body: Auto release API v${{env.INTERSCRIPT_VERSION}} by @interscript-ci
+#        tag_name: v${{env.API_VERSION}}
+#        release_name: Release v${{env.API_VERSION}}
+#        body: Auto release API v${{env.API_VERSION}}
 #        draft: false
 #        prerelease: false
