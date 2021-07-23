@@ -1,0 +1,95 @@
+= Relaton API
+
+== Getting Started
+
+![](https://github.com/relaton/relaton.org/workflows/GitHub%20CI/badge.svg)
+[![View performance data on
+Skylight](https://badges.skylight.io/rpm/PIVJdcAuqhzA.svg?token=BUfX6VJ06XPoc8ZDBC8h3U8JWszSRXyJGnMHTvYP2nE)](https://www.skylight.io/app/applications/PIVJdcAuqhzA)
+[![View performance data on
+Skylight](https://badges.skylight.io/typical/PIVJdcAuqhzA.svg?token=BUfX6VJ06XPoc8ZDBC8h3U8JWszSRXyJGnMHTvYP2nE)](https://www.skylight.io/app/applications/PIVJdcAuqhzA)
+
+== Usage
+
+=== Fetch version
+
+The `/api/v1/version` endpoint allow us to fetch the verions of the api.relaton.org and underlying gem relaton.
+
+**Request**
+
+```
+Method: GET
+Endpoint: /api/v1/version
+Content-Type: text/plain
+Parameters: no
+
+Example: /api/v1/version
+```
+
+**Response**
+
+```
+Version: 0.0.3, Relaton version: 1.8.pre4
+```
+=== Fetch a standard
+
+The `/api/v1/standard` endpoint allow us to fetch any of the supported standards.
+
+**Request**
+
+```
+Method: GET
+Endpoint: /api/v1/standard
+Content-Type: application/xml
+Parameters: code (required), year, all_parts, keep_year
+
+Example: /api/v1/standard?code=ISO 19011&year=2011&all_parts=true,keep_year=false
+```
+
+**Response**
+
+[source,xml]
+----
+<bibdata type="standard">
+  <fetched>2021-07-17</fetched>
+  <title type="title-intro" format="text/plain" language="en" script="Latn">Geographic information</title>
+  <title type="title-main" format="text/plain" language="en" script="Latn">Metadata</title>
+  <title type="title-part" format="text/plain" language="en" script="Latn">Part 1: Fundamentals</title>
+  <title type="main" format="text/plain" language="en" script="Latn">Geographic information - Metadata - Part 1: Fundamentals</title>
+  <title type="title-intro" format="text/plain" language="fr" script="Latn">Information géographique</title>
+  <title type="title-main" format="text/plain" language="fr" script="Latn">Métadonnées</title>
+  <title type="title-part" format="text/plain" language="fr" script="Latn">Partie 1: Principes de base</title>
+  <title type="main" format="text/plain" language="fr" script="Latn">Information géographique - Métadonnées - Partie 1: Principes de base</title>
+  <uri type="src">https://www.iso.org/standard/53798.html</uri>
+  <uri type="obp">https://www.iso.org/obp/ui/#!iso:std:53798:en</uri>
+  <uri type="rss">https://www.iso.org/contents/data/standard/05/37/53798.detail.rss</uri>
+  <docidentifier type="ISO">ISO 19115-1</docidentifier>
+  <docidentifier type="URN">urn:iso:std:iso:19115:-1:stage-90.93:ed-1:en,fr</docidentifier>
+  ...
+  <ext>
+    <doctype>international-standard</doctype>
+    <editorialgroup>
+      <technical-committee number="211" type="TC">ISO/TC 211Geographic information/Geomatics</technical-committee>
+    </editorialgroup>
+    <ics>
+      <code>35.240.70</code>
+      <text>IT applications in science</text>
+    </ics>
+    <structuredidentifier type="ISO">
+      <project-number>ISO 19115</project-number>
+    </structuredidentifier>
+  </ext>
+</bibdata>
+----
+
+Note: In the underneath, it is using the [relaton
+library](https://github.com/relaton/relaton), so please check that documentation
+for all supported standards.
+
+
+== Development
+
+After checking out the repo, run `bundle install` to install dependencies. Then, run `rspec` to run the tests.
+
+== Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/relaton/api.relaton.org.
