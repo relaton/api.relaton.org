@@ -44,7 +44,7 @@ Parameters: code (required), year, all_parts, keep_year
 Example: /api/v1/standard?code=ISO 19011&year=2011&all_parts=true,keep_year=false
 ----
 
-Try it out: https://api.relaton.org/api/v1/document?code=ISO 19011&year=2011&all_parts=true,keep_year=false
+Try it out, click https://api.relaton.org/api/v1/document?code=ISO%2019011&year=2011&all_parts=true,keep_year=false[this link]!
 
 **Response**
 
