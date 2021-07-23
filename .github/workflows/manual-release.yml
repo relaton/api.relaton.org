@@ -8,10 +8,10 @@ on:
         description: |
           Relation API release version in semver format,
           "-preview.x" will be deployed to staging by default,
-          default equals "gem_version"
+          default equals "gem_version", ex: 1.8.1-preview.1
       gem_version:
         required: true
-        description: Relaton Gem version that published to "rubygems.org"
+        description: Relaton Gem version that published to "rubygems.org", ex. 1.8.1
 
 env:
   GITHUB_PUSH_TOKEN: ${{ secrets.RELATON_CI_PAT }}
