@@ -1,22 +1,21 @@
 = Relaton API
 
+This API is deployed at https://api.relaton.org for public access.
+
 == Getting Started
 
-![](https://github.com/relaton/relaton.org/workflows/GitHub%20CI/badge.svg)
-[![View performance data on
-Skylight](https://badges.skylight.io/rpm/PIVJdcAuqhzA.svg?token=BUfX6VJ06XPoc8ZDBC8h3U8JWszSRXyJGnMHTvYP2nE)](https://www.skylight.io/app/applications/PIVJdcAuqhzA)
-[![View performance data on
-Skylight](https://badges.skylight.io/typical/PIVJdcAuqhzA.svg?token=BUfX6VJ06XPoc8ZDBC8h3U8JWszSRXyJGnMHTvYP2nE)](https://www.skylight.io/app/applications/PIVJdcAuqhzA)
+image:https://github.com/relaton/api.relaton.org/actions/workflows/ci.yml/badge.svg["build, link="https://github.com/relaton/api.relaton.org/actions/workflows/ci.yml"]
 
 == Usage
 
 === Fetch version
 
-The `/api/v1/version` endpoint allow us to fetch the verions of the api.relaton.org and underlying gem relaton.
+The `/api/v1/version` endpoint allow us to fetch the verions of the `api.relaton.org` through the Relaton gem.
 
 **Request**
 
-```
+[source]
+----
 Method: GET
 Endpoint: /api/v1/version
 Content-Type: text/plain
@@ -43,7 +42,9 @@ Content-Type: application/xml
 Parameters: code (required), year, all_parts, keep_year
 
 Example: /api/v1/standard?code=ISO 19011&year=2011&all_parts=true,keep_year=false
-```
+----
+
+Try it out: https://api.relaton.org/api/v1/document?code=ISO 19011&year=2011&all_parts=true,keep_year=false
 
 **Response**
 
@@ -81,9 +82,8 @@ Example: /api/v1/standard?code=ISO 19011&year=2011&all_parts=true,keep_year=fals
 </bibdata>
 ----
 
-Note: In the underneath, it is using the [relaton
-library](https://github.com/relaton/relaton), so please check that documentation
-for all supported standards.
+NOTE: https://github.com/relaton/relaton[Relaton] is used for the response, please check
+documentation at Relaton for all supported standards.
 
 
 == Development
