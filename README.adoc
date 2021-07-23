@@ -22,20 +22,26 @@ Content-Type: text/plain
 Parameters: no
 
 Example: /api/v1/version
-```
+----
+
+Try it out, click https://api.relaton.org/api/v1/version[this link]!
 
 **Response**
 
-```
+[source]
+----
 Version: 0.0.3, Relaton version: 1.8.pre4
-```
-=== Fetch a standard
+----
 
-The `/api/v1/standard` endpoint allow us to fetch any of the supported standards.
+
+=== Fetch bibdata of a document
+
+The `/api/v1/document` endpoint allow us to fetch any of the supported standards.
 
 **Request**
 
-```
+[source]
+----
 Method: GET
 Endpoint: /api/v1/standard
 Content-Type: application/xml
