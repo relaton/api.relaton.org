@@ -4,8 +4,6 @@ require_relative "finder"
 
 module Relaton
   class Api
-    VERSION = "0.0.7"
-
     class << self
       #
       # AWS Lambda handler
@@ -51,7 +49,7 @@ module Relaton
         when /\/api\/v1\/version$/
           case event["httpMethod"]
           when "GET"
-            response "Version: #{VERSION}, Relaton version: #{Relaton::VERSION}"
+            response "Release: #{ENV['API_VERSION']}, Relaton version: #{Relaton::VERSION}"
           end
         end
       end
@@ -138,7 +136,7 @@ module Relaton
           statusCode: status,
           headers: {
             "Content-Type" => type,
-            "Access-Control-Allow-Origin" => "http://dev.local:4000",
+            "Access-Control-Allow-Origin" => "*",
             "Access-Control-Allow-Headers" => "Content-Type,X-Amz-Date,Authorization,X-Api-Key,X-Amz-Security-Token",
             "Access-Control-Allow-Methods" => "GET, POST, OPTIONS",
           },

@@ -1,6 +1,7 @@
 describe Relaton::Api do
   context "GET standard" do
     it "Returns version" do
+      expect(ENV).to receive(:[]).with("API_VERSION").and_return "0.1"
       event = {
         "httpMethod" => "GET",
         "path" => "/api/v1/version",
@@ -8,7 +9,7 @@ describe Relaton::Api do
       resp = Relaton::Api.handler event: event
       expect(resp[:statusCode]).to eq 200
       expect(resp[:headers]["Content-Type"]).to eq "text/plain"
-      expect(resp[:body]).to include "Version"
+      expect(resp[:body]).to include "Release: 0.1, Relaton version:"
     end
 
     it "returns status 200" do
@@ -23,7 +24,7 @@ describe Relaton::Api do
         resp = Relaton::Api.handler event: event
         expect(resp[:statusCode]).to eq 200
         expect(resp[:headers]["Content-Type"]).to eq "text/xml"
-        expect(resp[:headers]["Access-Control-Allow-Origin"]).to eq "http://dev.local:4000"
+        expect(resp[:headers]["Access-Control-Allow-Origin"]).to eq "*"
         expect(resp[:headers]["Access-Control-Allow-Methods"]).to eq "GET, POST, OPTIONS"
         expect(resp[:body]).to include "<docnumber>19115</docnumber>"
       end
