@@ -4,7 +4,7 @@ require_relative "finder"
 
 module Relaton
   class Api
-    VERSION = "0.0.4"
+    VERSION = "0.0.5"
 
     class << self
       #
@@ -139,6 +139,7 @@ module Relaton
           headers: {
             "Content-Type" => type,
             "Access-Control-Allow-Origin" => "*",
+            "Access-Control-Allow-Methods" => "GET, OPTIONS",
           },
           body: body,
         }
