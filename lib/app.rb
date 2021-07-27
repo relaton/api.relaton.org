@@ -136,7 +136,10 @@ module Relaton
       def response(body, type: "text/plain", status: 200)
         {
           statusCode: status,
-          headers: { "Content-Type" => type },
+          headers: {
+            "Content-Type" => type,
+            "Access-Control-Allow-Origin" => "*",
+          },
           body: body,
         }
       end
