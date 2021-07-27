@@ -23,7 +23,7 @@ describe Relaton::Api do
         resp = Relaton::Api.handler event: event
         expect(resp[:statusCode]).to eq 200
         expect(resp[:headers]["Content-Type"]).to eq "text/xml"
-        expect(resp[:headers]["Access-Control-Allow-Origin"]).to eq "*"
+        expect(resp[:headers]["Access-Control-Allow-Origin"]).to eq "http://dev.local:4000"
         expect(resp[:headers]["Access-Control-Allow-Methods"]).to eq "GET, POST, OPTIONS"
         expect(resp[:body]).to include "<docnumber>19115</docnumber>"
       end
