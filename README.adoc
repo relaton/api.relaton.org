@@ -19,9 +19,12 @@ The `/api/v1/version` endpoint allow us to fetch the verions of the `api.relaton
 Method: GET
 Endpoint: /api/v1/version
 Content-Type: text/plain
-Parameters: no
+Parameters: format (optional)
 
-Example: /api/v1/version
+Examples:
+/api/v1/version
+/api/v1/version?format=xml
+/api/v1/version?format=json
 ----
 
 Try it out, click https://api.relaton.org/api/v1/version[this link]!
@@ -47,8 +50,11 @@ Endpoint: /api/v1/standard
 Content-Type: application/xml
 Parameters: code (required), year, all_parts, keep_year
 
-Example: /api/v1/standard?code=ISO 19115-1&year=2011&all_parts=true,keep_year=false
-```
+Examples:
+/api/v1/standard?code=ISO 19115-1&year=2014&all_parts=true,keep_year=false
+/api/v1/standard?code=ISO 19115-1:2014&all_parts=true
+/api/v1/standard?code=ISO 19115-1
+----
 
 **Response**
 
@@ -85,6 +91,8 @@ Example: /api/v1/standard?code=ISO 19115-1&year=2011&all_parts=true,keep_year=fa
   </ext>
 </bibdata>
 ----
+
+Try it out, click https://api.relaton.org/api/v1/document?code=ISO%2019115-1&year=2014&all_parts=true,keep_year=false[this link]!
 
 NOTE: https://github.com/relaton/relaton[Relaton] is used for the response, please check
 documentation at Relaton for all supported standards.

@@ -9,7 +9,6 @@ describe Relaton::Api do
         event = {
           "httpMethod" => "GET",
           "path" => "/api/v1/version",
-          "queryStringParameters" => {},
         }
         resp = Relaton::Api.handler event: event
         expect(resp[:statusCode]).to eq 200

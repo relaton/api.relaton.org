@@ -48,11 +48,18 @@ module Relaton
           end
         when /\/api\/v1\/version$/
           case event["httpMethod"]
-          when "GET" then version event["queryStringParameters"]["format"]
+          when "GET" then version event["queryStringParameters"]&.fetch("format")
           end
         end
       end
 
+      #
+      # Formatted version response
+      #
+      # @param [String, nil] format
+      #
+      # @return [Hash] <description>
+      #
       def version(format)
         case format
         when "xml"
