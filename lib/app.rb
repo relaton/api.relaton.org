@@ -84,6 +84,7 @@ module Relaton
           return bad_request "Parametr 'code' is required."
         end
 
+        puts "Code: #{event['queryStringParameters']}"
         item = Relaton::Finder.instance.fetch(*params(event))
         return not_found "Document not found." unless item
 
