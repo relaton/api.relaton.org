@@ -39,12 +39,7 @@ module Relaton
         case event["path"]
         when /\/api\/v1\/document$/
           case event["httpMethod"]
-          when "GET"
-            unless event["queryStringParameters"]["code"]
-              return bad_request "Parametr 'code' is required."
-            end
-
-            fetch event
+          when "GET" then fetch event
           end
         when /\/api\/v1\/version$/
           case event["httpMethod"]
@@ -82,6 +77,13 @@ module Relaton
       # @return [Hash] AWS Lambda response
       #
       def fetch(event)
+        if event["queryStringParameters"].nil?
+          return bad_request "Parameters are missed or incorrect. "\
+            "See the documentation https://github.com/relaton/api.relaton.org#fetch-bibdata-of-a-document"
+        elsif event["queryStringParameters"]["code"].nil?
+          return bad_request "Parametr 'code' is required."
+        end
+
         item = Relaton::Finder.instance.fetch(*params(event))
         return not_found "Document not found." unless item
 

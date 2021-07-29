@@ -87,16 +87,29 @@ describe Relaton::Api do
       end
     end
 
-    it "returns status 400" do
-      event = {
-        "httpMethod" => "GET",
-        "path" => "/api/v1/document",
-        "queryStringParameters" => { "year" => "2019" },
-      }
-      resp = Relaton::Api.handler event: event
-      expect(resp[:statusCode]).to eq 400
-      expect(resp[:headers]["Content-Type"]).to eq "text/plain"
-      expect(resp[:body]).to eq "Bad request. Parametr 'code' is required."
+    context "returns status 400" do
+      it "missed code parameter" do
+        event = {
+          "httpMethod" => "GET",
+          "path" => "/api/v1/document",
+          "queryStringParameters" => { "year" => "2019" },
+        }
+        resp = Relaton::Api.handler event: event
+        expect(resp[:statusCode]).to eq 400
+        expect(resp[:headers]["Content-Type"]).to eq "text/plain"
+        expect(resp[:body]).to eq "Bad request. Parametr 'code' is required."
+      end
+
+      it "incorrect or missed prarameters" do
+        event = {
+          "httpMethod" => "GET",
+          "path" => "/api/v1/document",
+        }
+        resp = Relaton::Api.handler event: event
+        expect(resp[:statusCode]).to eq 400
+        expect(resp[:headers]["Content-Type"]).to eq "text/plain"
+        expect(resp[:body]).to include "Bad request. Parameters are missed or incorrect."
+      end
     end
   end
 
