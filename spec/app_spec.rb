@@ -1,15 +1,45 @@
 describe Relaton::Api do
   context "GET standard" do
-    it "Returns version" do
-      expect(ENV).to receive(:[]).with("API_VERSION").and_return "0.1"
-      event = {
-        "httpMethod" => "GET",
-        "path" => "/api/v1/version",
-      }
-      resp = Relaton::Api.handler event: event
-      expect(resp[:statusCode]).to eq 200
-      expect(resp[:headers]["Content-Type"]).to eq "text/plain"
-      expect(resp[:body]).to include "Release: 0.1, Relaton version:"
+    context "Returns version" do
+      before :each do
+        expect(ENV).to receive(:[]).with("API_VERSION").and_return "0.1"
+      end
+
+      it "plain text" do
+        event = {
+          "httpMethod" => "GET",
+          "path" => "/api/v1/version",
+          "queryStringParameters" => {},
+        }
+        resp = Relaton::Api.handler event: event
+        expect(resp[:statusCode]).to eq 200
+        expect(resp[:headers]["Content-Type"]).to eq "text/plain"
+        expect(resp[:body]).to include "Release: 0.1, Relaton version:"
+      end
+
+      it "xml" do
+        event = {
+          "httpMethod" => "GET",
+          "path" => "/api/v1/version",
+          "queryStringParameters" => { "format" => "xml" },
+        }
+        resp = Relaton::Api.handler event: event
+        expect(resp[:statusCode]).to eq 200
+        expect(resp[:headers]["Content-Type"]).to eq "text/xml"
+        expect(resp[:body]).to include "<version><release>0.1</release><relaton>"
+      end
+
+      it "json" do
+        event = {
+          "httpMethod" => "GET",
+          "path" => "/api/v1/version",
+          "queryStringParameters" => { "format" => "json" },
+        }
+        resp = Relaton::Api.handler event: event
+        expect(resp[:statusCode]).to eq 200
+        expect(resp[:headers]["Content-Type"]).to eq "application/json"
+        expect(resp[:body]).to include "{\"release\":\"0.1\",\"relaton\":"
+      end
     end
 
     it "returns status 200" do

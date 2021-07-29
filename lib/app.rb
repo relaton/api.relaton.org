@@ -48,9 +48,21 @@ module Relaton
           end
         when /\/api\/v1\/version$/
           case event["httpMethod"]
-          when "GET"
-            response "Release: #{ENV['API_VERSION']}, Relaton version: #{Relaton::VERSION}"
+          when "GET" then version event["queryStringParameters"]["format"]
           end
+        end
+      end
+
+      def version(format)
+        case format
+        when "xml"
+          xml = "<version><release>#{ENV['API_VERSION']}</release><relaton>#{Relaton::VERSION}</relaton></version>"
+          response xml, type: "text/xml"
+        when "json"
+          json = { release: ENV["API_VERSION"], relaton: Relaton::VERSION }.to_json
+          response json, type: "application/json"
+        else
+          response "Release: #{ENV['API_VERSION']}, Relaton version: #{Relaton::VERSION}"
         end
       end
 
