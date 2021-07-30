@@ -13,7 +13,7 @@ end
 require "./lib/app"
 
 ENV["AWS_BUCKET"] = "bucket"
-ENV["AWS_REGION"] = "us-west"
+ENV["AWS_REGION"] = "us-east-1"
 ENV["AWS_ACCESS_KEY_ID"] = "AWS_ACCESS_KEY_ID"
 ENV["AWS_SECRET_ACCESS_KEY"] = "AWS_SECRET_ACCESS_KEY"
 

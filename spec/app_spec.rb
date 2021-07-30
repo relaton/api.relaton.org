@@ -97,10 +97,10 @@ describe Relaton::Api do
         resp = Relaton::Api.handler event: event
         expect(resp[:statusCode]).to eq 400
         expect(resp[:headers]["Content-Type"]).to eq "text/plain"
-        expect(resp[:body]).to eq "Bad request. Parametr 'code' is required."
+        expect(resp[:body]).to eq "Bad request. Parameter 'code' is required."
       end
 
-      it "incorrect or missed prarameters" do
+      it "missed search prarameters" do
         event = {
           "httpMethod" => "GET",
           "path" => "/api/v1/document",
@@ -109,6 +109,20 @@ describe Relaton::Api do
         expect(resp[:statusCode]).to eq 400
         expect(resp[:headers]["Content-Type"]).to eq "text/plain"
         expect(resp[:body]).to include "Bad request. Parameters are missed or incorrect."
+      end
+
+      it "incorrect code" do
+        event = {
+          "httpMethod" => "GET",
+          "path" => "/api/v1/document",
+          "queryStringParameters" => { "code" => "ISO\u0010241-1" },
+        }
+        VCR.use_cassette "incorrect_code" do
+          resp = Relaton::Api.handler event: event
+          expect(resp[:statusCode]).to eq 400
+          expect(resp[:headers]["Content-Type"]).to eq "text/plain"
+          expect(resp[:body]).to include "Bad request. Parameter 'code' contains invalid symbols."
+        end
       end
     end
   end

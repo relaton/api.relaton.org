@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://bucket.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso%10241_1.
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Host:
+      - bucket.s3.amazonaws.com
+      X-Amz-Date:
+      - 20210730T135522Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210730/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=1cd468efea344cf062ff81b6eff5641aa75fef99929a3410f5d72a6f85e4b647
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - g+hxUf4p0ku22TOTfB3QmExLKgKZldSAbxSMMxaU31gpTfkn/YILKjxHUxEd/qi3J0F1jvG7uGM=
+      X-Amz-Request-Id:
+      - RZR60DSNTEF0GFGE
+      Date:
+      - Fri, 30 Jul 2021 13:55:24 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso&#x10;241_1.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
+  recorded_at: Fri, 30 Jul 2021 13:55:23 GMT
+recorded_with: VCR 6.0.0

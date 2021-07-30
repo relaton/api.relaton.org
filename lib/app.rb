@@ -76,20 +76,22 @@ module Relaton
       #
       # @return [Hash] AWS Lambda response
       #
-      def fetch(event)
+      def fetch(event) # rubocop:disable Metrics/MethodLength
         if event["queryStringParameters"].nil?
           return bad_request "Parameters are missed or incorrect. "\
             "See the documentation https://github.com/relaton/api.relaton.org#fetch-bibdata-of-a-document"
         elsif event["queryStringParameters"]["code"].nil?
-          return bad_request "Parametr 'code' is required."
+          return bad_request "Parameter 'code' is required."
         end
 
-        puts "Code: #{event['queryStringParameters']}"
         item = Relaton::Finder.instance.fetch(*params(event))
         return not_found "Document not found." unless item
 
         xml = item.to_xml bibdata: true
         response xml, type: "text/xml"
+      rescue Aws::Xml::Parser::ParsingError
+        bad_request "Parameter 'code' contains invalid symbols. "\
+          "See this guide https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html"
       end
 
       #
