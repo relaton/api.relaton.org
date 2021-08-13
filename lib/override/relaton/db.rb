@@ -24,13 +24,6 @@ module Relaton
       return db if type == :static
 
       db.check_all_versions?
-      # Dir["#{path}/*/"].each do |fdir|
-      #   next if db.check_version?(fdir)
-
-      #   FileUtils.rm_rf(fdir, secure: true)
-      #   Util.log("[relaton] WARNING: cache #{fdir}: version is obsolete and "\
-      #            "cache is cleared.", :warning)
-      # end
       db
     end
 

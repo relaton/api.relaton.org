@@ -1,5 +1,9 @@
 describe Relaton::Api do
   context "GET standard" do
+    before :each do
+      expect(Relaton::Storage.instance).to receive(:check_version?).and_return(true).at_most :once
+    end
+
     context "Returns version" do
       before :each do
         expect(ENV).to receive(:[]).with("API_VERSION").and_return "0.1"
