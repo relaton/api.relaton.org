@@ -32,13 +32,13 @@ RSpec.describe Relaton::Storage do
       body = "<doc>Test doc</doc>"
       key = File.join dir, "doc"
       client = double "AwsClient"
-      item = double "Item", key: "#{key}.xml"
-      list = double "List", contents: [item]
+      # item = double "Item", key: "#{key}.xml"
+      # list = double "List", contents: [item]
       obj_body = double "Body", read: body
       obj = double "Object", body: obj_body
-      expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return(bucket).twice
-      expect(client).to receive(:list_objects_v2).with(bucket: bucket, prefix: "#{key}.").and_return list
-      expect(client).to receive(:get_object).with(bucket: bucket, key: "#{key}.xml").and_return obj
+      expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return(bucket)
+      # expect(client).to receive(:list_objects_v2).with(bucket: bucket, prefix: "#{key}.").and_return list
+      expect(client).to receive(:get_object).with(bucket: bucket, key: key).and_return obj
       expect(Aws::S3::Client).to receive(:new).and_return client
       expect(storage.get(key)).to eq body
     end
@@ -46,11 +46,12 @@ RSpec.describe Relaton::Storage do
     it "delete document from S3" do
       key = "cache/iso/doc"
       client = double "AwsClient"
-      item = double "Item", key: "#{key}.xml"
-      list = double "List", contents: [item]
-      expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return(bucket).twice
-      expect(client).to receive(:list_objects_v2).with(bucket: bucket, prefix: "#{key}.").and_return list
-      expect(client).to receive(:delete_object).with(bucket: bucket, key: "#{key}.xml")
+      # item = double "Item", key: "#{key}.xml"
+      # list = double "List", contents: [item]
+      expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return(bucket)
+      # expect(client).to receive(:list_objects_v2).with(bucket: bucket, prefix: "#{key}.").and_return list
+      delete = { objects: [{ key: key }] }
+      expect(client).to receive(:delete_objects).with(bucket: bucket, delete: delete)
       expect(Aws::S3::Client).to receive(:new).and_return client
       storage.delete key
     end
@@ -90,9 +91,16 @@ RSpec.describe Relaton::Storage do
       storage.send :set_version, dir
     end
 
+    it "call delete with nil" do
+      client = double "AwsClient"
+      expect(Aws::S3::Client).to receive(:new).and_return client
+      expect(client).to_not receive :delete_objects
+      storage.delete nil
+    end
+
     context "check version" do
       it "valid" do
-        dir = "cahche/iso"
+        dir = "cahche/iso/"
         key = File.join dir, "version"
         hash = Relaton::Registry.instance.by_type("iso").grammar_hash
         client = double "AwsClient"
@@ -105,7 +113,7 @@ RSpec.describe Relaton::Storage do
       end
 
       it "version file doesn't exist" do
-        dir = "cahche/iso"
+        dir = "cahche/iso/"
         key = File.join dir, "version"
         client = double "AwsClient"
         error = Aws::S3::Errors::NoSuchKey.new Seahorse::Client::RequestContext.new, ""

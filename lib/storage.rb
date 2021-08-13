@@ -32,24 +32,36 @@ module Relaton
     #
     def all(dir)
       list = @s3.list_objects_v2 bucket: ENV["AWS_BUCKET"], prefix: dir
-      list.contents.select { |i| i.key.match?(/\.xml$/) }.sort_by(&:key).map do |item|
+      list.contents.select { |i| i.key.match?(/\.xml$/) }.sort_by(&:key)
+        .map do |item|
         content = s3_read item.key
         block_given? ? yield(item.key, content) : content
       end
     end
 
+    def ls(prefix, dirs: true, files: true)
+      resp = @s3.list_objects_v2(bucket: ENV["AWS_BUCKET"],
+                                 prefix: File.join(prefix, "/"),
+                                 delimiter: "/")
+      list = []
+      list += resp.common_prefixes.map(&:prefix) if dirs
+      list += resp.contents.map(&:key) if files
+      list
+    end
+
     # Delete item
-    # @param key [String] path to file without extension
-    def delete(key)
-      f = search_ext(key)
-      @s3.delete_object bucket: ENV["AWS_BUCKET"], key: f if f
+    # @param keys [String, Array<String>] path to file without extension
+    def delete(keys)
+      array(keys).map { |f| { key: f } }.each_slice(1000) do |objects|
+        @s3.delete_objects bucket: ENV["AWS_BUCKET"], delete: { objects: objects }
+      end
     end
 
     # Check if version of the DB match to the gem grammar hash.
     # @param fdir [String] dir pathe to flavor cache
     # @return [Boolean]
     def check_version?(fdir)
-      file_version = "#{fdir}/version"
+      file_version = File.join fdir, "version"
       s3_read(file_version) == Relaton::DbCache.grammar_hash(fdir)
     rescue Aws::S3::Errors::NoSuchKey
       false
@@ -60,12 +72,29 @@ module Relaton
     # @param key [String]
     # @return [String, NilClass]
     def get(key)
-      return unless (f = search_ext(key))
+      s3_read key
+    end
 
-      s3_read f
+    #
+    # Checks if there is file with xml or txt extension and return filename with
+    # the extension.
+    #
+    # @param file [String]
+    # @return [String, NilClass]
+    def search_ext(file)
+      fs = @s3.list_objects_v2 bucket: ENV["AWS_BUCKET"], prefix: "#{file}."
+      fs.contents.first&.key
     end
 
     private
+
+    def array(content)
+      case content
+      when Array then content
+      when nil then []
+      else [content]
+      end
+    end
 
     #
     # Read file form AWS S#
@@ -88,17 +117,6 @@ module Relaton
     def s3_write(key, value)
       @s3.put_object(bucket: ENV["AWS_BUCKET"], key: key, body: value,
                      content_type: "text/plain; charset=utf-8")
-    end
-
-    #
-    # Checks if there is file with xml or txt extension and return filename with
-    # the extension.
-    #
-    # @param file [String]
-    # @return [String, NilClass]
-    def search_ext(file)
-      fs = @s3.list_objects_v2 bucket: ENV["AWS_BUCKET"], prefix: "#{file}."
-      fs.contents.first&.key
     end
 
     # Set version of the DB to the gem grammar hash.

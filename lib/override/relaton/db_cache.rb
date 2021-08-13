@@ -39,7 +39,8 @@ module Relaton
     # Delete item
     # @param key [String]
     def delete(key)
-      @storage.delete filename(key)
+      f = @storage.search_ext(key)
+      f && @storage.delete(filename(f))
     end
 
     # Check if version of the DB match to the gem grammar hash.
@@ -47,6 +48,20 @@ module Relaton
     # @return [Boolean]
     def check_version?(fdir)
       @storage.check_version? fdir
+    end
+
+    #
+    # Check all flavors version and clean cahce from invalid documents
+    #
+    # @return [<Type>] <description>
+    #
+    def check_all_versions?
+      files = @storage.ls(@dir, files: false).reduce([]) do |a, fd|
+        next a if check_version?(fd)
+
+        a + @storage.ls(fd, dirs: false)
+      end
+      @storage.delete files
     end
 
     # Reads file by a key
@@ -57,7 +72,9 @@ module Relaton
       if @ext == "yml"
         super
       else
-        @storage.get filename(key)
+        return unless (f = @storage.search_ext(filename(key)))
+
+        @storage.get f
       end
     end
   end

@@ -1,6 +1,11 @@
 require "singleton"
 require "relaton"
-require "./lib/db"
+# require "relaton_bib"
+
+Relaton::Registry.instance
+
+require "./lib/override/relaton/db"
+require "./lib/override/relaton_calconnect/hit_collection"
 
 Encoding.default_internal = Encoding::UTF_8
 Encoding.default_external = Encoding::UTF_8

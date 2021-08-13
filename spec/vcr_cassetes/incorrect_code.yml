@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://bucket.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso%10241_1.
+    uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/?delimiter=/&list-type=2&prefix=cache/
     body:
       encoding: UTF-8
       string: ''
@@ -14,14 +14,14 @@ http_interactions:
       User-Agent:
       - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
       Host:
-      - bucket.s3.amazonaws.com
+      - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210730T135522Z
+      - 20210813T121527Z
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210730/us-east-1/s3/aws4_request,
-        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=1cd468efea344cf062ff81b6eff5641aa75fef99929a3410f5d72a6f85e4b647
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=17b119fcb6b7a7d87c64ee73f5050eb1fb55aa371291b7f77a4004eeea764094
       Content-Length:
       - '0'
       Accept:
@@ -32,11 +32,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - g+hxUf4p0ku22TOTfB3QmExLKgKZldSAbxSMMxaU31gpTfkn/YILKjxHUxEd/qi3J0F1jvG7uGM=
+      - OvOA0nFt/qdqlxFz5FiwPFxii7YRWBQhKn8kowgw7PGvVb4Ps7Xd9F/3kBL5u+7I7rWcElaT6qU=
       X-Amz-Request-Id:
-      - RZR60DSNTEF0GFGE
+      - H17JCMM1GMYWMNJT
       Date:
-      - Fri, 30 Jul 2021 13:55:24 GMT
+      - Fri, 13 Aug 2021 12:15:29 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -49,6 +49,57 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>bucket</Name><Prefix>cache/iso/iso&#x10;241_1.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
-  recorded_at: Fri, 30 Jul 2021 13:55:23 GMT
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><IsTruncated>false</IsTruncated></ListBucketResult>
+  recorded_at: Fri, 13 Aug 2021 12:15:28 GMT
+- request:
+    method: get
+    uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso%10241_1.
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      Host:
+      - test-infrastructure-lambda-api.s3.amazonaws.com
+      X-Amz-Date:
+      - 20210813T121531Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=cc1b3dd971d8efce532e94ddad531b00d8497661937dc0a2fe350b7b231b6510
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - 0UdWL8fokhUvA1WzWpVAvWHy9tU8VbnVmM8RSGIBqzLUCQYZo9LO1xu8G0Hv3i1VsFI+iQ++/+k=
+      X-Amz-Request-Id:
+      - 1CMW81MDNPCB6MC9
+      Date:
+      - Fri, 13 Aug 2021 12:15:33 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/iso/iso&#x10;241_1.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
+  recorded_at: Fri, 13 Aug 2021 12:15:32 GMT
 recorded_with: VCR 6.0.0
