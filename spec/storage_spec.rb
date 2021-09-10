@@ -17,14 +17,14 @@ RSpec.describe Relaton::Storage do
       body = "<doc>Test doc</doc>"
       key = File.join dir, "doc.xml"
       client = double "AwsClient"
-      expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return(bucket).twice
-      expect(client).to receive(:head_object).with(bucket: bucket, key: "cahche/iso/version")
+      expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return(bucket)
+      # expect(client).to receive(:head_object).with(bucket: bucket, key: "cahche/iso/version")
       expect(client).to receive(:put_object).with(
         bucket: bucket, key: key, body: body,
         content_type: "text/plain; charset=utf-8"
       )
       expect(Aws::S3::Client).to receive(:new).and_return client
-      storage.save dir, key, body
+      storage.save key, body
     end
 
     it "read document from S3" do
@@ -88,7 +88,7 @@ RSpec.describe Relaton::Storage do
         content_type: "text/plain; charset=utf-8"
       )
       expect(Aws::S3::Client).to receive(:new).and_return client
-      storage.send :set_version, dir
+      storage.send :save_version, dir, hash
     end
 
     it "call delete with nil" do
@@ -109,7 +109,7 @@ RSpec.describe Relaton::Storage do
         expect(client).to receive(:get_object).with(bucket: bucket, key: key).and_return obj
         expect(Aws::S3::Client).to receive(:new).and_return client
         expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return(bucket)
-        expect(storage.check_version?(dir)).to be true
+        expect(storage.get_version(dir)).to eq hash
       end
 
       it "version file doesn't exist" do
@@ -120,7 +120,7 @@ RSpec.describe Relaton::Storage do
         expect(client).to receive(:get_object).with(bucket: bucket, key: key).and_raise error
         expect(Aws::S3::Client).to receive(:new).and_return client
         expect(ENV).to receive(:[]).with("AWS_BUCKET").and_return(bucket)
-        expect(storage.check_version?(dir)).to be false
+        expect(storage.get_version(dir)).to be_nil
       end
     end
   end

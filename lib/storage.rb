@@ -14,12 +14,10 @@ module Relaton
     #
     # Save file to storage
     #
-    # @param dir [String]
     # @param key [String]
     # @param value [String]
     #
-    def save(dir, key, value)
-      set_version dir
+    def save(key, value)
       s3_write key, value
     end
 
@@ -57,14 +55,14 @@ module Relaton
       end
     end
 
-    # Check if version of the DB match to the gem grammar hash.
+    # Read version file with saved hash.
     # @param fdir [String] dir pathe to flavor cache
-    # @return [Boolean]
-    def check_version?(fdir)
+    # @return [String, nil]
+    def get_version(fdir)
       file_version = File.join fdir, "version"
-      s3_read(file_version) == Relaton::DbCache.grammar_hash(fdir)
+      s3_read(file_version)
     rescue Aws::S3::Errors::NoSuchKey
-      false
+      nil
     end
 
     # Reads file by a key
@@ -84,6 +82,16 @@ module Relaton
     def search_ext(file)
       fs = @s3.list_objects_v2 bucket: ENV["AWS_BUCKET"], prefix: "#{file}."
       fs.contents.first&.key
+    end
+
+    # Save version of the DB to the gem grammar hash.
+    # @param fdir [String] dir pathe to flover cache
+    # @param hash [String] hash string
+    def save_version(fdir, hash)
+      file_version = "#{fdir}/version"
+      @s3.head_object bucket: ENV["AWS_BUCKET"], key: file_version
+    rescue Aws::S3::Errors::NotFound
+      s3_write file_version, hash
     end
 
     private
@@ -117,15 +125,6 @@ module Relaton
     def s3_write(key, value)
       @s3.put_object(bucket: ENV["AWS_BUCKET"], key: key, body: value,
                      content_type: "text/plain; charset=utf-8")
-    end
-
-    # Set version of the DB to the gem grammar hash.
-    # @param fdir [String] dir pathe to flover cache
-    def set_version(fdir)
-      file_version = "#{fdir}/version"
-      @s3.head_object bucket: ENV["AWS_BUCKET"], key: file_version
-    rescue Aws::S3::Errors::NotFound
-      s3_write file_version, Relaton::DbCache.grammar_hash(fdir)
     end
   end
 end

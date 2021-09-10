@@ -1,7 +1,7 @@
 require_relative "hit"
 
 module RelatonCalconnect
-  class HitCollection < RelatonBib::HitCollection
+  class HitCollection
     # @param ref [Strig]
     # @param year [String]
     def initialize(ref, year = nil)

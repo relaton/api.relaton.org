@@ -12,16 +12,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122524Z
+      - 20210910T105120Z
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
-        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=13b8f3eb78a30071d46c3dca9d3ee1faa42543a6014f858671ffa2777f480ac4
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=4b3cad45fb4c8b1c2df89804ca0b488be4dba42337c654e4639ce48197771e57
       Content-Length:
       - '0'
       Accept:
@@ -32,11 +32,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - jqHubQCknT1SXgIqh6BX9AviPpPgjYgVt4DVCeF61/eQE5c+5zFF7d1SvCAzBIVSkUmFEZcl0sA=
+      - IfilQ/LQeaDLbKZFd66Nm8h/BKF8U1mqRf5/cqhY/vz4p75wqrwX3yMqLpXbygxswB/n3CvClAM=
       X-Amz-Request-Id:
-      - Y1A4X4EX9VNXTBR6
+      - P930XW2B57A3M5Q1
       Date:
-      - Fri, 13 Aug 2021 12:25:26 GMT
+      - Fri, 10 Sep 2021 10:51:22 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -49,8 +49,115 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><IsTruncated>false</IsTruncated></ListBucketResult>
-  recorded_at: Fri, 13 Aug 2021 12:25:25 GMT
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/</Prefix><KeyCount>1</KeyCount><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><IsTruncated>false</IsTruncated><CommonPrefixes><Prefix>cache/iso/</Prefix></CommonPrefixes></ListBucketResult>
+  recorded_at: Fri, 10 Sep 2021 10:51:21 GMT
+- request:
+    method: get
+    uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/?delimiter=/&list-type=2&prefix=cache/iso/
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
+      Host:
+      - test-infrastructure-lambda-api.s3.amazonaws.com
+      X-Amz-Date:
+      - 20210910T105121Z
+      X-Amz-Content-Sha256:
+      - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=e4abf870fa8212e752385cfa8c3d91372a9466316049b7b00a72ef1798933a2a
+      Content-Length:
+      - '0'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - RSTXe11BVNU2B1liQKqxuuinh4rW5+4Zno0SIFBecXOn2IefVXYDJSLjQkCem50Fx9uwPvoV1c4=
+      X-Amz-Request-Id:
+      - VEYYY2WVB5MDG7VQ
+      Date:
+      - Fri, 10 Sep 2021 10:51:23 GMT
+      X-Amz-Bucket-Region:
+      - us-east-1
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/iso/</Prefix><KeyCount>1</KeyCount><MaxKeys>1000</MaxKeys><Delimiter>/</Delimiter><IsTruncated>false</IsTruncated><Contents><Key>cache/iso/version</Key><LastModified>2021-09-10T10:50:20.000Z</LastModified><ETag>&quot;d92213208650717afa3e6ec22114b55e&quot;</ETag><Size>32</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+  recorded_at: Fri, 10 Sep 2021 10:51:22 GMT
+- request:
+    method: post
+    uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/?delete
+    body:
+      encoding: UTF-8
+      string: <Delete xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Object><Key>cache/iso/version</Key></Object></Delete>
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
+      Expect:
+      - 100-continue
+      Content-Md5:
+      - f2TBkJWO5lyQlYsAWItDog==
+      Host:
+      - test-infrastructure-lambda-api.s3.amazonaws.com
+      X-Amz-Date:
+      - 20210910T105122Z
+      X-Amz-Content-Sha256:
+      - cf9a2feeaab331d1ca7d9690ab159f095d36ad9e1074b6694173809fbdb14da9
+      Authorization:
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=content-md5;host;user-agent;x-amz-content-sha256;x-amz-date,
+        Signature=b3f07d06d688fce08cd006b47bdbd1c0d95ad86c2f582b60c0404dfa1a3a637d
+      Content-Length:
+      - '110'
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Amz-Id-2:
+      - b2+YMI81N3Ekal1DOcI0PizBulsSY760zp7IQWADfrMc7JaJtE8uaaLHRNmQ+YWR3uuBrgIdb7c=
+      X-Amz-Request-Id:
+      - VEYMZA899MJ05RXT
+      Date:
+      - Fri, 10 Sep 2021 10:51:23 GMT
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Server:
+      - AmazonS3
+      Connection:
+      - close
+    body:
+      encoding: UTF-8
+      string: |-
+        <?xml version="1.0" encoding="UTF-8"?>
+        <DeleteResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Deleted><Key>cache/iso/version</Key></Deleted></DeleteResult>
+  recorded_at: Fri, 10 Sep 2021 10:51:23 GMT
 - request:
     method: get
     uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso_123456.
@@ -63,16 +170,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122525Z
+      - 20210910T105123Z
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
-        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=7fb0990f64be3ce73458c9f8ad4eae68a4e8e0b1447daf80c95afd261d088e46
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=3bbb70d2aa4a86c3944a2f65a7c36782c0e1762a2438b1bd4b878c334cedd050
       Content-Length:
       - '0'
       Accept:
@@ -83,11 +190,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - j1fh4NR034JfEbuZhS+9ee6qy5TyaOhZbkGLnIaF4Wm97+Syg7XaY5RkFt5Q7agF48VBKn/xJBs=
+      - dmmx/fMOVaCfnBNM1UstjwuCRG1HzoK49SVaH0MGSAXNmo+IyufJig1EcFZANtehJ3JxfYbclPk=
       X-Amz-Request-Id:
-      - 6RHD49AVE7JZGPR9
+      - S2WCSNZKCXCAB6TW
       Date:
-      - Fri, 13 Aug 2021 12:25:27 GMT
+      - Fri, 10 Sep 2021 10:51:25 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -101,7 +208,7 @@ http_interactions:
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/iso/iso_123456.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
-  recorded_at: Fri, 13 Aug 2021 12:25:26 GMT
+  recorded_at: Fri, 10 Sep 2021 10:51:23 GMT
 - request:
     method: get
     uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/?list-type=2&prefix=ISO(ISO%20123456).
@@ -114,16 +221,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122526Z
+      - 20210910T105124Z
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
-        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=f04a471c63d9265d79a8a95128657de4d1bdbb38d50d3168b51df8f74d207e67
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=7a542fac79817b0e8211395423585714a9d2923da166974a94fc3b2f9ae2b4ce
       Content-Length:
       - '0'
       Accept:
@@ -134,11 +241,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - 2jYES6PGEcos3Dh1HUciV99znvJcIqfdYKDtsCfPl5EiDrGYQwAWLH6wLiMScy9Kl9BLiBHBijU=
+      - 5T51Q2HZr8tvzfiA7AlcYEGZTnlrS+nc/K6ewxdfOysxazOYeUe7bX7+AmBYOWd64NEHZm8bGck=
       X-Amz-Request-Id:
-      - 6RH0P6XC5TS7D9Q0
+      - S2WFH2NT0SP6EG7H
       Date:
-      - Fri, 13 Aug 2021 12:25:27 GMT
+      - Fri, 10 Sep 2021 10:51:25 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -152,7 +259,7 @@ http_interactions:
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>ISO(ISO 123456).</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
-  recorded_at: Fri, 13 Aug 2021 12:25:26 GMT
+  recorded_at: Fri, 10 Sep 2021 10:51:25 GMT
 - request:
     method: get
     uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso_123456.
@@ -165,16 +272,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122526Z
+      - 20210910T105125Z
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
-        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=ac7d8da697d88739ed9bd1a2e2a0df7367f500c88c3f3948bb30c928dcef7551
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=a6236b859356ac85cca32f990da7ec8db505c57abaf40467391e349ea0306e9b
       Content-Length:
       - '0'
       Accept:
@@ -185,11 +292,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - "/9+KlCbrPeV1jlaHSv0ADCSfqyQbGiGXJW6CfwGnG5RO5evS2QX8buV/6pr7IPMyBxW7Twp52Xw="
+      - SQMH+Z6Y1cfdw94HzhM6VNNlcCvhSPPBn3XmRSk60OLwWxtpPuswaaFS6cfDmioCCLrEUJA5FgY=
       X-Amz-Request-Id:
-      - YJNEZBWEVMZ79J36
+      - RRB0DFHKF8J9SSCA
       Date:
-      - Fri, 13 Aug 2021 12:25:28 GMT
+      - Fri, 10 Sep 2021 10:51:27 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -203,47 +310,66 @@ http_interactions:
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
         <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/iso/iso_123456.</Prefix><KeyCount>0</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated></ListBucketResult>
-  recorded_at: Fri, 13 Aug 2021 12:25:27 GMT
+  recorded_at: Fri, 10 Sep 2021 10:51:26 GMT
 - request:
-    method: get
-    uri: https://www.iso.org/cms/render/live/en/sites/isoorg.advancedSearch.do?docNumber=123456&status=ENT_ACTIVE,ENT_PROGRESS,ENT_INACTIVE,ENT_DELETED
+    method: post
+    uri: https://jcl49wv5ar-dsn.algolia.net/1/indexes/all_en/query
     body:
-      encoding: US-ASCII
-      string: ''
+      encoding: UTF-8
+      string: '{"query":"ISO 123456","hitsPerPage":100,"filters":"category:standard"}'
     headers:
-      Accept:
-      - application/json, text/plain, */*
+      User-Agent:
+      - Algolia for Ruby (2.1.1), Ruby (3.0.0)
+      X-Algolia-Api-Key:
+      - dd1b9e1ab383f4d4817d29cd5e96d3f0
+      X-Algolia-Application-Id:
+      - JCL49WV5AR
+      Content-Type:
+      - application/json; charset=utf-8
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      User-Agent:
-      - Ruby
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
   response:
     status:
       code: 200
-      message: ''
+      message: OK
     headers:
-      Expires:
-      - Wed, 09 May 1979 05:30:00 GMT
-      Cache-Control:
-      - no-cache, no-store, must-revalidate, proxy-revalidate, max-age=0
-      Pragma:
-      - no-cache
-      Set-Cookie:
-      - BIGipServerpool_prod_iso_www-jahia=713576842.36895.0000; path=/; Httponly;
-        Secure
-      - JSESSIONID=9EC6D2219DB62B487AD78E973E4C2AA4; Path=/; Secure; HttpOnly
-      Content-Type:
-      - application/json;charset=UTF-8
-      Content-Length:
-      - '16'
+      Server:
+      - nginx
       Date:
-      - Fri, 13 Aug 2021 12:25:27 GMT
+      - Fri, 10 Sep 2021 10:51:27 GMT
+      Content-Type:
+      - application/json; charset=UTF-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      X-Alg-Pt:
+      - '1'
+      Accept-Encoding:
+      - deflate, gzip
+      Cache-Control:
+      - no-store
+      Access-Control-Allow-Origin:
+      - "*"
+      Timing-Allow-Origin:
+      - "*"
+      X-Content-Type-Options:
+      - nosniff
       Strict-Transport-Security:
-      - max-age=31536000; includeSubDomains
+      - max-age=31536000; includeSubDomains; preload
+      Content-Disposition:
+      - inline; filename=a.txt
     body:
-      encoding: UTF-8
-      string: '{"standards":[]}'
-  recorded_at: Fri, 13 Aug 2021 12:25:28 GMT
+      encoding: ASCII-8BIT
+      string: !binary |-
+        eyJoaXRzIjpbeyJjYXRlZ29yeSI6InN0YW5kYXJkIiwicGF0aCI6Ii9zaXRlcy9pc29vcmcvY29udGVudHMvZGF0YS9zdGFuZGFyZC8wMy8xNS8zMTUzMSIsInV1aWQiOiI4NmUzNTI5OC04ZTZjLTRkNzYtYmM5Yy1kM2NkOGVlNmYxMzkiLCJ0aXRsZSI6IklTTy9JRUMgNzA2NDoyMDAzIEluZm9ybWF0aW9uIHRlY2hub2xvZ3kg4oCUIFNlY3VyaXR5IHRlY2huaXF1ZXMg4oCUIENoZWNrIGNoYXJhY3RlciBzeXN0ZW1zIiwic3RhdHVzIjoiUHVibGlzaGVkIiwieWVhciI6MjAwNiwib3JkZXIiOjExLCJ0ZXh0IjoiSVNPL0lFQyA3MDY0OjIwMDIgc3BlY2lmaWVzIGEgc2V0IG9mIGNoZWNrIGNoYXJhY3RlciBzeXN0ZW1zIGNhcGFibGUgb2YgcHJvdGVjdGluZyBzdHJpbmdzIGFnYWluc3QgZXJyb3JzIHdoaWNoIG9jY3VyIHdoZW4gcGVvcGxlIGNvcHkgb3Iga2V5IGRhdGEuIFRoZSBzdHJpbmdzIG1heSBiZSBvZiBmaXhlZCBvciB2YXJpYWJsZSBsZW5ndGggYW5kIG1heSBoYXZlIGNoYXJhY3RlciBzZXRzIHdoaWNoIGFyZSBudW1lcmljICgxMCBkaWdpdHM6IDAgdG8gOSk7IGFscGhhYmV0aWMgKDI2IGxldHRlcnM6IEEgdG8gWik7IGFscGhhbnVtZXJpYyAobGV0dGVycyBhbmQgZGlnaXRzKS4gRW1iZWRkZWQgc3BhY2VzIGFuZCBzcGVjaWFsIGNoYXJhY3RlcnMgYXJlIGlnbm9yZWQuIElTTy9JRUMgNzA2NDoyMDAyIHNwZWNpZmllcyBjb25mb3JtYW5jZSByZXF1aXJlbWVudHMgZm9yIHByb2R1Y3RzIGRlc2NyaWJlZCBhcyBnZW5lcmF0aW5nIGNoZWNrIGNoYXJhY3RlcnMgb3IgY2hlY2tpbmcgc3RyaW5ncyB1c2luZyB0aGUgc3lzdGVtcyBnaXZlbiBpbiB0aGlzIEludGVybmF0aW9uYWwgU3RhbmRhcmQuIElTTy9JRUMgNzA2NDoyMDAyIGlzIGZvciB1c2UgaW4gaW5mb3JtYXRpb24gaW50ZXJjaGFuZ2UgYmV0d2VlbiBvcmdhbml6YXRpb25zOyBpdCBpcyBhbHNvIHN0cm9uZ2x5IHJlY29tbWVuZGVkIGFzIGdvb2QgcHJhY3RpY2UgZm9yIGludGVybmFsIGluZm9ybWF0aW9uIHN5c3RlbXMuIFRoZSBjaGVjayBjaGFyYWN0ZXIgc3lzdGVtcyBzcGVjaWZpZWQgaW4gSVNPL0lFQyA3MDY0OjIwMDIgY2FuIGRldGVjdDogYWxsIHNpbmdsZSBzdWJzdGl0dXRpb24gZXJyb3JzICh0aGUgc3Vic3RpdHV0aW9uIG9mIGEgc2luZ2xlIGNoYXJhY3RlciBmb3IgYW5vdGhlciwgZm9yIGV4YW1wbGUgNDIzNCBmb3IgMTIzNCk7IGFsbCBvciBuZWFybHkgYWxsIHNpbmdsZSAobG9jYWwpIHRyYW5zcG9zaXRpb24gZXJyb3JzICh0aGUgdHJhbnNwb3NpdGlvbiBvZiB0d28gc2luZ2xlIGNoYXJhY3RlcnMsIGVpdGhlciBhZGphY2VudCBvciB3aXRoIG9uZSBjaGFyYWN0ZXIgYmV0d2VlbiB0aGVtLCBmb3IgZXhhbXBsZSAxMjM1NCBvciAxMjU0MyBmb3IgMTIzNDUpOyBhbGwgb3IgbmVhcmx5IGFsbCBzaGlmdCBlcnJvcnMgKHNoaWZ0cyBvZiB0aGUgd2hvbGUgc3RyaW5nIHRvIHRoZSBsZWZ0IG9yIHJpZ2h0KTsgYSBoaWdoIHByb3BvcnRpb24gb2YgZG91YmxlIHN1YnN0aXR1dGlvbiBlcnJvcnMgKHR3byBzZXBhcmF0ZSBzaW5nbGUgc3Vic3RpdHV0aW9uIGVycm9ycyBpbiB0aGUgc2FtZSBzdHJpbmcsIGZvciBleGFtcGxlIDcyMzQ1ODcgZm9yIDEyMzQ1NjcpOyBhIGhpZ2ggcHJvcG9ydGlvbiBvZiBhbGwgb3RoZXIgZXJyb3JzLiBJU08vSUVDIDcwNjQ6MjAwMiBleGNsdWRlcyBzeXN0ZW1zIGRlc2lnbmVkIHNwZWNpZmljYWxseSB0bzogcGVybWl0IGJvdGggZXJyb3IgZGV0ZWN0aW9uIGFuZCBhdXRvbWF0aWMgY29ycmVjdGlvbjsgZGV0ZWN0IGRlbGliZXJhdGUgZmFsc2lmaWNhdGlvbjsgY2hlY2sgc3RyaW5ncyBpbnRlcmNoYW5nZWQgc29sZWx5IGJldHdlZW4gbWFjaGluZXMuIElTTy9JRUMgNzA2NDoyMDAyIHNwZWNpZmllcyB0d28gdHlwZXMgb2Ygc3lzdGVtczogcHVyZSBzeXN0ZW1zOyBoeWJyaWQgc3lzdGVtcy4gVGhlIHB1cmUgc3lzdGVtcyB1c2UgYSBzaW5nbGUgbW9kdWx1cyBmb3IgYWxsIHN0YWdlcyBvZiB0aGUgY2FsY3VsYXRpb24uICIsIm9iamVjdElEIjoiMzE1MzFfMCIsIl9oaWdobGlnaHRSZXN1bHQiOnsidGl0bGUiOnsidmFsdWUiOiI8ZW0+SVNPPC9lbT4vSUVDIDcwNjQ6MjAwMyBJbmZvcm1hdGlvbiB0ZWNobm9sb2d5IOKAlCBTZWN1cml0eSB0ZWNobmlxdWVzIOKAlCBDaGVjayBjaGFyYWN0ZXIgc3lzdGVtcyIsIm1hdGNoTGV2ZWwiOiJwYXJ0aWFsIiwiZnVsbHlIaWdobGlnaHRlZCI6ZmFsc2UsIm1hdGNoZWRXb3JkcyI6WyJpc28iXX0sInRleHQiOnsidmFsdWUiOiI8ZW0+SVNPPC9lbT4vSUVDIDcwNjQ6MjAwMiBzcGVjaWZpZXMgYSBzZXQgb2YgY2hlY2sgY2hhcmFjdGVyIHN5c3RlbXMgY2FwYWJsZSBvZiBwcm90ZWN0aW5nIHN0cmluZ3MgYWdhaW5zdCBlcnJvcnMgd2hpY2ggb2NjdXIgd2hlbiBwZW9wbGUgY29weSBvciBrZXkgZGF0YS4gVGhlIHN0cmluZ3MgbWF5IGJlIG9mIGZpeGVkIG9yIHZhcmlhYmxlIGxlbmd0aCBhbmQgbWF5IGhhdmUgY2hhcmFjdGVyIHNldHMgd2hpY2ggYXJlIG51bWVyaWMgKDEwIGRpZ2l0czogMCB0byA5KTsgYWxwaGFiZXRpYyAoMjYgbGV0dGVyczogQSB0byBaKTsgYWxwaGFudW1lcmljIChsZXR0ZXJzIGFuZCBkaWdpdHMpLiBFbWJlZGRlZCBzcGFjZXMgYW5kIHNwZWNpYWwgY2hhcmFjdGVycyBhcmUgaWdub3JlZC4gPGVtPklTTzwvZW0+L0lFQyA3MDY0OjIwMDIgc3BlY2lmaWVzIGNvbmZvcm1hbmNlIHJlcXVpcmVtZW50cyBmb3IgcHJvZHVjdHMgZGVzY3JpYmVkIGFzIGdlbmVyYXRpbmcgY2hlY2sgY2hhcmFjdGVycyBvciBjaGVja2luZyBzdHJpbmdzIHVzaW5nIHRoZSBzeXN0ZW1zIGdpdmVuIGluIHRoaXMgSW50ZXJuYXRpb25hbCBTdGFuZGFyZC4gPGVtPklTTzwvZW0+L0lFQyA3MDY0OjIwMDIgaXMgZm9yIHVzZSBpbiBpbmZvcm1hdGlvbiBpbnRlcmNoYW5nZSBiZXR3ZWVuIG9yZ2FuaXphdGlvbnM7IGl0IGlzIGFsc28gc3Ryb25nbHkgcmVjb21tZW5kZWQgYXMgZ29vZCBwcmFjdGljZSBmb3IgaW50ZXJuYWwgaW5mb3JtYXRpb24gc3lzdGVtcy4gVGhlIGNoZWNrIGNoYXJhY3RlciBzeXN0ZW1zIHNwZWNpZmllZCBpbiA8ZW0+SVNPPC9lbT4vSUVDIDcwNjQ6MjAwMiBjYW4gZGV0ZWN0OiBhbGwgc2luZ2xlIHN1YnN0aXR1dGlvbiBlcnJvcnMgKHRoZSBzdWJzdGl0dXRpb24gb2YgYSBzaW5nbGUgY2hhcmFjdGVyIGZvciBhbm90aGVyLCBmb3IgZXhhbXBsZSA0MjM0IGZvciAxMjM0KTsgYWxsIG9yIG5lYXJseSBhbGwgc2luZ2xlIChsb2NhbCkgdHJhbnNwb3NpdGlvbiBlcnJvcnMgKHRoZSB0cmFuc3Bvc2l0aW9uIG9mIHR3byBzaW5nbGUgY2hhcmFjdGVycywgZWl0aGVyIGFkamFjZW50IG9yIHdpdGggb25lIGNoYXJhY3RlciBiZXR3ZWVuIHRoZW0sIGZvciBleGFtcGxlIDEyMzU0IG9yIDEyNTQzIGZvciAxMjM0NSk7IGFsbCBvciBuZWFybHkgYWxsIHNoaWZ0IGVycm9ycyAoc2hpZnRzIG9mIHRoZSB3aG9sZSBzdHJpbmcgdG8gdGhlIGxlZnQgb3IgcmlnaHQpOyBhIGhpZ2ggcHJvcG9ydGlvbiBvZiBkb3VibGUgc3Vic3RpdHV0aW9uIGVycm9ycyAodHdvIHNlcGFyYXRlIHNpbmdsZSBzdWJzdGl0dXRpb24gZXJyb3JzIGluIHRoZSBzYW1lIHN0cmluZywgZm9yIGV4YW1wbGUgNzIzNDU4NyBmb3IgPGVtPjEyMzQ1NjwvZW0+Nyk7IGEgaGlnaCBwcm9wb3J0aW9uIG9mIGFsbCBvdGhlciBlcnJvcnMuIDxlbT5JU088L2VtPi9JRUMgNzA2NDoyMDAyIGV4Y2x1ZGVzIHN5c3RlbXMgZGVzaWduZWQgc3BlY2lmaWNhbGx5IHRvOiBwZXJtaXQgYm90aCBlcnJvciBkZXRlY3Rpb24gYW5kIGF1dG9tYXRpYyBjb3JyZWN0aW9uOyBkZXRlY3QgZGVsaWJlcmF0ZSBmYWxzaWZpY2F0aW9uOyBjaGVjayBzdHJpbmdzIGludGVyY2hhbmdlZCBzb2xlbHkgYmV0d2VlbiBtYWNoaW5lcy4gPGVtPklTTzwvZW0+L0lFQyA3MDY0OjIwMDIgc3BlY2lmaWVzIHR3byB0eXBlcyBvZiBzeXN0ZW1zOiBwdXJlIHN5c3RlbXM7IGh5YnJpZCBzeXN0ZW1zLiBUaGUgcHVyZSBzeXN0ZW1zIHVzZSBhIHNpbmdsZSBtb2R1bHVzIGZvciBhbGwgc3RhZ2VzIG9mIHRoZSBjYWxjdWxhdGlvbi4gIiwibWF0Y2hMZXZlbCI6ImZ1bGwiLCJmdWxseUhpZ2hsaWdodGVkIjpmYWxzZSwibWF0Y2hlZFdvcmRzIjpbImlzbyIsIjEyMzQ1NiJdfX19XSwibmJIaXRzIjoxLCJwYWdlIjowLCJuYlBhZ2VzIjoxLCJoaXRzUGVyUGFnZSI6MTAwLCJleGhhdXN0aXZlTmJIaXRzIjp0cnVlLCJxdWVyeSI6IklTTyAxMjM0NTYiLCJwYXJhbXMiOiJxdWVyeT1JU08rMTIzNDU2JmhpdHNQZXJQYWdlPTEwMCZmaWx0ZXJzPWNhdGVnb3J5JTNBc3RhbmRhcmQiLCJwcm9jZXNzaW5nVGltZU1TIjoxfQ==
+  recorded_at: Fri, 10 Sep 2021 10:51:27 GMT
 - request:
     method: head
     uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/cache/iso/version
@@ -256,16 +382,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122528Z
+      - 20210910T105131Z
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
-        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=fffc94721491a578c9adffaa1bf2cb1c3dddffe54a3db8f688a9b3f3ab8a343c
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=f8d89fe049edce49e7740b369ddf2d2377ec7057a463231be7f0b089b0843b1d
       Content-Length:
       - '0'
       Accept:
@@ -276,19 +402,19 @@ http_interactions:
       message: Not Found
     headers:
       X-Amz-Request-Id:
-      - G27X6K2SBQQPT66F
+      - 5ZVERT2AFNQNY58N
       X-Amz-Id-2:
-      - yOU14gNeGFSu6O317PAdNT9uggj6RTILoUR2dK/lP978ut+sWlKuRPysJMIVUTTcF1VS7vdll/U=
+      - wlZ+vYkJ0lymgcXFrhuRmnqAnx2B/x1+IYbpPgPLVWVWmegMDxlz97DxMKPFx8j/AhdTlUtCmj4=
       Content-Type:
       - application/xml
       Date:
-      - Fri, 13 Aug 2021 12:25:28 GMT
+      - Fri, 10 Sep 2021 10:51:31 GMT
       Server:
       - AmazonS3
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Fri, 13 Aug 2021 12:25:28 GMT
+  recorded_at: Fri, 10 Sep 2021 10:51:32 GMT
 - request:
     method: put
     uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/cache/iso/version
@@ -301,7 +427,7 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Expect:
       - 100-continue
       Content-Md5:
@@ -309,13 +435,13 @@ http_interactions:
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122528Z
+      - 20210910T105132Z
       X-Amz-Content-Sha256:
       - de79a1e3c961664b9c3a0423a478961a6cbe67dbbb323a239e7a8f76e1b4881f
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
         SignedHeaders=content-md5;content-type;host;user-agent;x-amz-content-sha256;x-amz-date,
-        Signature=f8a1ad1614d767f9e855f5c4ddebab59a11ccd937cfe56d37cb7a64c7ba0ace6
+        Signature=86b3694add3473114eb4f8a1d104a4ef745c0810c8c29e349ecd04c11df19172
       Content-Length:
       - '32'
       Accept:
@@ -326,11 +452,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - GqY3lEX7uoo4qeYjtg+7Rq/2Jy0krY+dIDWOiT8Gy7d0+Xm5pH4bmZXHRWGCNtlHy3k7rrW7oHQ=
+      - ToLYcCAfwM7gdoE+3SFNdyjarJWBuChtFfzjly+dThSqL2PpvmO11FJ/YteSRrI1VILI3DViGis=
       X-Amz-Request-Id:
-      - MJJYNP325ZAFYT21
+      - RWAPQ2TT4X2P64TA
       Date:
-      - Fri, 13 Aug 2021 12:25:30 GMT
+      - Fri, 10 Sep 2021 10:51:34 GMT
       Etag:
       - '"d92213208650717afa3e6ec22114b55e"'
       Server:
@@ -340,34 +466,34 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Fri, 13 Aug 2021 12:25:29 GMT
+  recorded_at: Fri, 10 Sep 2021 10:51:34 GMT
 - request:
     method: put
     uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/cache/iso/iso_123456.notfound
     body:
       encoding: UTF-8
-      string: not_found 2021-08-13
+      string: not_found 2021-09-10
     headers:
       Content-Type:
       - text/plain; charset=utf-8
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Expect:
       - 100-continue
       Content-Md5:
-      - 3ZCImDSUsPMjGILml0+iLQ==
+      - asKsyjqBjqTH/daDBzq4MQ==
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122529Z
+      - 20210910T105136Z
       X-Amz-Content-Sha256:
-      - 7b40b091aa5fa8fdd29e9c841c69089f73b83eae5044d5bc5aa5ab8f5cf84568
+      - e857705542ec36404d0d097faec9dc28e417651b49b29294eb84ac68c1267cc8
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
         SignedHeaders=content-md5;content-type;host;user-agent;x-amz-content-sha256;x-amz-date,
-        Signature=e7bdb5626715b66276e07709f28989b3b5d8ef0f32c9d744fd61988532763370
+        Signature=6f7169f86ae48c2a57f6f7cb4edcd83990dc6519789bb21b7d3212cbcc8929d9
       Content-Length:
       - '20'
       Accept:
@@ -378,13 +504,13 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - SYq+hWZAnAhSOC2TpDkAy5gKQiNd6vPcOZF1hqZu0WpltWqmbY+G4fLLGQ3fxvnnjKoVNvJ9ypk=
+      - 5+vlKA/L17GKKjlAUXY3ky90zoaeSzOKiUWarUMxoAGP16aGm5Ypa9gcjeFuf427zCN8R40KaB4=
       X-Amz-Request-Id:
-      - TXN3P322N2B4GMBK
+      - PBP7H3WWGHA84985
       Date:
-      - Fri, 13 Aug 2021 12:25:31 GMT
+      - Fri, 10 Sep 2021 10:51:38 GMT
       Etag:
-      - '"dd9088983494b0f3231882e6974fa22d"'
+      - '"6ac2acca3a818ea4c7fdd683073ab831"'
       Server:
       - AmazonS3
       Content-Length:
@@ -392,7 +518,7 @@ http_interactions:
     body:
       encoding: UTF-8
       string: ''
-  recorded_at: Fri, 13 Aug 2021 12:25:30 GMT
+  recorded_at: Fri, 10 Sep 2021 10:51:37 GMT
 - request:
     method: get
     uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/?list-type=2&prefix=cache/iso/iso_123456.
@@ -405,16 +531,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122530Z
+      - 20210910T105141Z
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
-        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=46cff66df5c1fd03d89e05960ec03647ca8f62a1767661103108b9b1117b57f9
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=44063ecadc5e4ed0bd8574cdd8c76d972a94bec048be184357c42919467f9fd9
       Content-Length:
       - '0'
       Accept:
@@ -425,11 +551,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - qUOubtB2HUjFOxZi5ymPNNlcsux5ibuJHki25rl1OuwNAH569yNUeOyT5HY9nQMIQ6JSTbzLNzI=
+      - v+Tz8us576wLm9YC/CxmruqTvUTcgqtbiZ/KF7etjD5241DYInFuBRmokCPwK0pBpVGjg1t8I+4=
       X-Amz-Request-Id:
-      - 1WY1GNSJXGT3ZQ0D
+      - T58E65KR4KAB3ZM8
       Date:
-      - Fri, 13 Aug 2021 12:25:32 GMT
+      - Fri, 10 Sep 2021 10:51:43 GMT
       X-Amz-Bucket-Region:
       - us-east-1
       Content-Type:
@@ -442,8 +568,8 @@ http_interactions:
       encoding: UTF-8
       string: |-
         <?xml version="1.0" encoding="UTF-8"?>
-        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/iso/iso_123456.</Prefix><KeyCount>1</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>cache/iso/iso_123456.notfound</Key><LastModified>2021-08-13T12:25:31.000Z</LastModified><ETag>&quot;dd9088983494b0f3231882e6974fa22d&quot;</ETag><Size>20</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
-  recorded_at: Fri, 13 Aug 2021 12:25:31 GMT
+        <ListBucketResult xmlns="http://s3.amazonaws.com/doc/2006-03-01/"><Name>test-infrastructure-lambda-api</Name><Prefix>cache/iso/iso_123456.</Prefix><KeyCount>1</KeyCount><MaxKeys>1000</MaxKeys><IsTruncated>false</IsTruncated><Contents><Key>cache/iso/iso_123456.notfound</Key><LastModified>2021-09-10T10:51:38.000Z</LastModified><ETag>&quot;6ac2acca3a818ea4c7fdd683073ab831&quot;</ETag><Size>20</Size><StorageClass>STANDARD</StorageClass></Contents></ListBucketResult>
+  recorded_at: Fri, 10 Sep 2021 10:51:41 GMT
 - request:
     method: get
     uri: https://test-infrastructure-lambda-api.s3.amazonaws.com/cache/iso/iso_123456.notfound
@@ -456,16 +582,16 @@ http_interactions:
       Accept-Encoding:
       - ''
       User-Agent:
-      - aws-sdk-ruby3/3.117.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.1
+      - aws-sdk-ruby3/3.121.0 ruby/3.0.0 x86_64-darwin20 aws-sdk-s3/1.96.2
       Host:
       - test-infrastructure-lambda-api.s3.amazonaws.com
       X-Amz-Date:
-      - 20210813T122531Z
+      - 20210910T105141Z
       X-Amz-Content-Sha256:
       - e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
       Authorization:
-      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210813/us-east-1/s3/aws4_request,
-        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=dfcf14bcbf7a3e0dce95160b7b323730d901071a6c53865742ffe9ea197a5b10
+      - AWS4-HMAC-SHA256 Credential=AKIAWV6WPL7UDXCLTTHX/20210910/us-east-1/s3/aws4_request,
+        SignedHeaders=host;user-agent;x-amz-content-sha256;x-amz-date, Signature=70495524a75b02fb76bbacb7b4ffae1436b9c09995cc3b15ab19a9385c4afc5c
       Content-Length:
       - '0'
       Accept:
@@ -476,15 +602,15 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - 98QwMwGrCb4OAiP0iZgFQ0ggegFwAFaRDP5dG9vGyiq0bbG9ejxthBqeZi1fU8lyunp5BEpXo1w=
+      - 4AqJ1+gUXrg0eOUGFfARCE6KRIMjjZm0l4zXnRb77LwbQvxZIddswquOw8X836QEU1pKwM+sikg=
       X-Amz-Request-Id:
-      - 591MR6YNE10Y7N1N
+      - T58068NDP2062X8N
       Date:
-      - Fri, 13 Aug 2021 12:25:33 GMT
+      - Fri, 10 Sep 2021 10:51:43 GMT
       Last-Modified:
-      - Fri, 13 Aug 2021 12:25:31 GMT
+      - Fri, 10 Sep 2021 10:51:38 GMT
       Etag:
-      - '"dd9088983494b0f3231882e6974fa22d"'
+      - '"6ac2acca3a818ea4c7fdd683073ab831"'
       Accept-Ranges:
       - bytes
       Content-Type:
@@ -495,6 +621,6 @@ http_interactions:
       - '20'
     body:
       encoding: UTF-8
-      string: not_found 2021-08-13
-  recorded_at: Fri, 13 Aug 2021 12:25:31 GMT
+      string: not_found 2021-09-10
+  recorded_at: Fri, 10 Sep 2021 10:51:43 GMT
 recorded_with: VCR 6.0.0

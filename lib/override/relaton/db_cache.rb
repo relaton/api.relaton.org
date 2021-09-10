@@ -27,7 +27,8 @@ module Relaton
       /^(?<pref>[^(]+)(?=\()/ =~ key.downcase
       prefix_dir = "#{@dir}/#{pref}"
       file = "#{filename(key)}.#{ext(value)}"
-      @storage.save prefix_dir, file, value
+      @storage.save_version prefix_dir, grammar_hash(prefix_dir)
+      @storage.save file, value
     end
 
     # Returns all items
@@ -47,7 +48,7 @@ module Relaton
     # @param fdir [String] dir pathe to flover cache
     # @return [Boolean]
     def check_version?(fdir)
-      @storage.check_version? fdir
+      @storage.get_version(fdir) == grammar_hash(fdir)
     end
 
     #
@@ -57,7 +58,7 @@ module Relaton
     #
     def check_all_versions?
       files = @storage.ls(@dir, files: false).reduce([]) do |a, fd|
-        next a if check_version?(fd)
+        next a if check_version?(fd) == grammar_hash(fd)
 
         a + @storage.ls(fd, dirs: false)
       end

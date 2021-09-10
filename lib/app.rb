@@ -79,7 +79,8 @@ module Relaton
       def fetch(event) # rubocop:disable Metrics/MethodLength
         if event["queryStringParameters"].nil?
           return bad_request "Parameters are missed or incorrect. "\
-            "See the documentation https://github.com/relaton/api.relaton.org#fetch-bibdata-of-a-document"
+                             "See the documentation https://github.com/relaton"\
+                             "/api.relaton.org#fetch-bibdata-of-a-document"
         elsif event["queryStringParameters"]["code"].nil?
           return bad_request "Parameter 'code' is required."
         end
@@ -91,7 +92,10 @@ module Relaton
         response xml, type: "text/xml"
       rescue Aws::Xml::Parser::ParsingError
         bad_request "Parameter 'code' contains invalid symbols. "\
-          "See this guide https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-keys.html"
+                    "See this guide https://docs.aws.amazon.com/AmazonS3/"\
+                    "latest/userguide/object-keys.html"
+      rescue RelatonBib::RequestError => e
+        service_unavailable e.message
       end
 
       #
@@ -144,6 +148,17 @@ module Relaton
       #
       def not_found(msg)
         response msg, status: 404
+      end
+
+      #
+      # Service unavailable respoonse
+      #
+      # @param [String] msg message
+      #
+      # @return [Hash] AWS Lambda response
+      #
+      def service_unavailable(msg)
+        response msg, status: 503
       end
 
       #

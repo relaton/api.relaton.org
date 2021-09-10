@@ -1,7 +1,7 @@
 describe Relaton::Api do
   context "GET standard" do
     before :each do
-      expect(Relaton::Storage.instance).to receive(:check_version?).and_return(true).at_most :once
+      allow(Relaton::Storage.instance).to receive(:get_version).and_return(nil)
     end
 
     context "Returns version" do
@@ -127,6 +127,21 @@ describe Relaton::Api do
           expect(resp[:headers]["Content-Type"]).to eq "text/plain"
           expect(resp[:body]).to include "Bad request. Parameter 'code' contains invalid symbols."
         end
+      end
+    end
+
+    context "return status 503" do
+      it "service unavailble" do
+        event = {
+          "httpMethod" => "GET",
+          "path" => "/api/v1/document",
+          "queryStringParameters" => { "code" => "ISO\u0010241-1" },
+        }
+        Singleton.__init__ Relaton::Finder
+        db = double "db instance"
+        expect(db).to receive(:fetch).and_raise RelatonBib::RequestError
+        expect(Relaton::Db).to receive(:init_bib_caches).and_return db
+        Relaton::Api.handler event: event
       end
     end
   end

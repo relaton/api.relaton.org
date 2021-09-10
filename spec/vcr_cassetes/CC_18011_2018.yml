@@ -2,13 +2,13 @@
 http_interactions:
 - request:
     method: get
-    uri: https://raw.githubusercontent.com/relaton/relaton-data-calconnect/main/data/cc_18011_2018.xml
+    uri: https://raw.githubusercontent.com/relaton/relaton-data-calconnect/main/data/CC_18011_2018.yaml
     body:
       encoding: US-ASCII
       string: ''
     headers:
       User-Agent:
-      - Faraday v1.5.1
+      - Faraday v1.7.1
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
       Accept:
@@ -21,7 +21,7 @@ http_interactions:
       Connection:
       - keep-alive
       Content-Length:
-      - '507'
+      - '412'
       Cache-Control:
       - max-age=300
       Content-Security-Policy:
@@ -29,7 +29,7 @@ http_interactions:
       Content-Type:
       - text/plain; charset=utf-8
       Etag:
-      - W/"623358a37368e4415aa4d4875ba3c0e632baca86319b003fb1c99aa944f611e0"
+      - W/"5a5c825e473233f84433dbb3c0502ef185a9dbed8263d3afa15110edaed0a996"
       Strict-Transport-Security:
       - max-age=31536000
       X-Content-Type-Options:
@@ -39,34 +39,34 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       X-Github-Request-Id:
-      - 2EBC:8C2D:26B1D1:29ED01:61168398
+      - F132:10428:D5FA3:DD469:613A2A87
       Accept-Ranges:
       - bytes
       Date:
-      - Fri, 13 Aug 2021 14:37:13 GMT
+      - Thu, 09 Sep 2021 15:39:42 GMT
       Via:
       - 1.1 varnish
       X-Served-By:
-      - cache-muc13934-MUC
+      - cache-muc13955-MUC
       X-Cache:
-      - MISS
+      - HIT
       X-Cache-Hits:
-      - '0'
+      - '1'
       X-Timer:
-      - S1628865433.889849,VS0,VE187
+      - S1631201983.553857,VS0,VE0
       Vary:
       - Authorization,Accept-Encoding
       Access-Control-Allow-Origin:
       - "*"
       X-Fastly-Request-Id:
-      - e985ed2697932e48be9c49c7ca0861885e6b3a98
+      - f42a4303b24d8d756bfa1a3732d2c50473c6dc25
       Expires:
-      - Fri, 13 Aug 2021 14:42:13 GMT
+      - Thu, 09 Sep 2021 15:44:42 GMT
       Source-Age:
-      - '0'
+      - '55'
     body:
       encoding: ASCII-8BIT
       string: !binary |-
-        PGJpYmRhdGEgdHlwZT0ic3RhbmRhcmQiPgogIDx0aXRsZSBmb3JtYXQ9InRleHQvcGxhaW4iIGxhbmd1YWdlPSJlbiI+RGF0ZSBhbmQgdGltZeKAieKAlOKAiUV4cGxpY2l0IHJlcHJlc2VudGF0aW9uPC90aXRsZT4KICA8dXJpIHR5cGU9InhtbCI+aHR0cHM6Ly9zdGFuZGFyZHMuY2FsY29ubmVjdC5vcmcvY3NkL2NjLTE4MDExLnhtbDwvdXJpPgogIDx1cmkgdHlwZT0icGRmIj5odHRwczovL3N0YW5kYXJkcy5jYWxjb25uZWN0Lm9yZy9jc2QvY2MtMTgwMTEucGRmPC91cmk+CiAgPHVyaSB0eXBlPSJkb2MiPmh0dHBzOi8vc3RhbmRhcmRzLmNhbGNvbm5lY3Qub3JnL2NzZC9jYy0xODAxMS5kb2M8L3VyaT4KICA8dXJpIHR5cGU9Imh0bWwiPmh0dHBzOi8vc3RhbmRhcmRzLmNhbGNvbm5lY3Qub3JnL2NzZC9jYy0xODAxMS5odG1sPC91cmk+CiAgPHVyaSB0eXBlPSJyeGwiPmh0dHBzOi8vc3RhbmRhcmRzLmNhbGNvbm5lY3Qub3JnL2NzZC9jYy0xODAxMS5yeGw8L3VyaT4KICA8ZG9jaWRlbnRpZmllciB0eXBlPSJjc2QiPkNDIDE4MDExOjIwMTg8L2RvY2lkZW50aWZpZXI+CiAgPGRvY251bWJlcj4xODAxMTwvZG9jbnVtYmVyPgogIDxkYXRlIHR5cGU9InB1Ymxpc2hlZCI+CiAgICA8b24+MjAxOC0wOS0xODwvb24+CiAgPC9kYXRlPgogIDxjb250cmlidXRvcj4KICAgIDxyb2xlIHR5cGU9ImF1dGhvciIvPgogICAgPG9yZ2FuaXphdGlvbj4KICAgICAgPG5hbWU+Q2FsQ29ubmVjdDwvbmFtZT4KICAgIDwvb3JnYW5pemF0aW9uPgogIDwvY29udHJpYnV0b3I+CiAgPGNvbnRyaWJ1dG9yPgogICAgPHJvbGUgdHlwZT0icHVibGlzaGVyIi8+CiAgICA8b3JnYW5pemF0aW9uPgogICAgICA8bmFtZT5DYWxDb25uZWN0PC9uYW1lPgogICAgPC9vcmdhbml6YXRpb24+CiAgPC9jb250cmlidXRvcj4KICA8ZWRpdGlvbj4xPC9lZGl0aW9uPgogIDx2ZXJzaW9uPgogICAgPHJldmlzaW9uLWRhdGU+MjAxOC0wOS0xODwvcmV2aXNpb24tZGF0ZT4KICA8L3ZlcnNpb24+CiAgPGxhbmd1YWdlPmVuPC9sYW5ndWFnZT4KICA8c2NyaXB0PkxhdG48L3NjcmlwdD4KICA8c3RhdHVzPgogICAgPHN0YWdlPnB1Ymxpc2hlZDwvc3RhZ2U+CiAgPC9zdGF0dXM+CiAgPGNvcHlyaWdodD4KICAgIDxmcm9tPjIwMTg8L2Zyb20+CiAgICA8b3duZXI+CiAgICAgIDxvcmdhbml6YXRpb24+CiAgICAgICAgPG5hbWU+Q2FsQ29ubmVjdDwvbmFtZT4KICAgICAgPC9vcmdhbml6YXRpb24+CiAgICA8L293bmVyPgogIDwvY29weXJpZ2h0PgogIDxleHQ+CiAgICA8ZG9jdHlwZT5zdGFuZGFyZDwvZG9jdHlwZT4KICAgIDxlZGl0b3JpYWxncm91cD4KICAgICAgPGNvbW1pdHRlZT5EQVRFVElNRTwvY29tbWl0dGVlPgogICAgPC9lZGl0b3JpYWxncm91cD4KICA8L2V4dD4KPC9iaWJkYXRhPg==
-  recorded_at: Fri, 13 Aug 2021 14:37:12 GMT
+        LS0tCmlkOiBDQzE4MDExLTIwMTgKdGl0bGU6CiAgY29udGVudDogRGF0ZSBhbmQgdGltZeKAieKAlOKAiUV4cGxpY2l0IHJlcHJlc2VudGF0aW9uCiAgbGFuZ3VhZ2U6IGVuCiAgZm9ybWF0OiB0ZXh0L3BsYWluCmxpbms6Ci0gY29udGVudDogaHR0cHM6Ly9zdGFuZGFyZHMuY2FsY29ubmVjdC5vcmcvY3NkL2NjLTE4MDExLnhtbAogIHR5cGU6IHhtbAotIGNvbnRlbnQ6IGh0dHBzOi8vc3RhbmRhcmRzLmNhbGNvbm5lY3Qub3JnL2NzZC9jYy0xODAxMS5wZGYKICB0eXBlOiBwZGYKLSBjb250ZW50OiBodHRwczovL3N0YW5kYXJkcy5jYWxjb25uZWN0Lm9yZy9jc2QvY2MtMTgwMTEuZG9jCiAgdHlwZTogZG9jCi0gY29udGVudDogaHR0cHM6Ly9zdGFuZGFyZHMuY2FsY29ubmVjdC5vcmcvY3NkL2NjLTE4MDExLmh0bWwKICB0eXBlOiBodG1sCi0gY29udGVudDogaHR0cHM6Ly9zdGFuZGFyZHMuY2FsY29ubmVjdC5vcmcvY3NkL2NjLTE4MDExLnJ4bAogIHR5cGU6IHJ4bAp0eXBlOiBzdGFuZGFyZApkb2NpZDoKICBpZDogQ0MgMTgwMTE6MjAxOAogIHR5cGU6IGNzZApkb2NudW1iZXI6ICcxODAxMScKZGF0ZToKICB0eXBlOiBwdWJsaXNoZWQKICB2YWx1ZTogJzIwMTgtMDktMTgnCmNvbnRyaWJ1dG9yOgotIG9yZ2FuaXphdGlvbjoKICAgIG5hbWU6IENhbENvbm5lY3QKICByb2xlOiBhdXRob3IKLSBvcmdhbml6YXRpb246CiAgICBuYW1lOiBDYWxDb25uZWN0CiAgcm9sZTogcHVibGlzaGVyCmVkaXRpb246ICcxJwp2ZXJzaW9uOgogIHJldmlzaW9uX2RhdGU6ICcyMDE4LTA5LTE4JwpyZXZkYXRlOiAnMjAxOC0wOS0xOCcKbGFuZ3VhZ2U6IGVuCnNjcmlwdDogTGF0bgpkb2NzdGF0dXM6CiAgc3RhZ2U6CiAgICB2YWx1ZTogcHVibGlzaGVkCmNvcHlyaWdodDoKICBvd25lcjoKICAgIG5hbWU6IENhbENvbm5lY3QKICBmcm9tOiAnMjAxOCcKZG9jdHlwZTogc3RhbmRhcmQKZWRpdG9yaWFsZ3JvdXA6CiAgbmFtZTogREFURVRJTUUK
+  recorded_at: Thu, 09 Sep 2021 15:39:42 GMT
 recorded_with: VCR 6.0.0
