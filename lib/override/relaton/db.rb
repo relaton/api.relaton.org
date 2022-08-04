@@ -8,7 +8,7 @@ module Relaton
       @registry = Relaton::Registry.instance
       @db = open_cache_biblio(global_cache, type: :global)
       @local_db = open_cache_biblio(local_cache, type: :local)
-      @static_db = open_cache_biblio File.expand_path "../relaton/static_cache", __dir__
+      # @static_db = open_cache_biblio "static_cache"
       @queues = {}
     end
 

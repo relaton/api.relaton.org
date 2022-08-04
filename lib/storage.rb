@@ -1,4 +1,5 @@
 require "aws-sdk-s3"
+require "aws-partitions"
 
 module Relaton
   #
@@ -29,7 +30,7 @@ module Relaton
     # @return [Array<String>]
     #
     def all(dir)
-      list = @s3.list_objects_v2 bucket: ENV["AWS_BUCKET"], prefix: dir
+      list = @s3.list_objects_v2 bucket: ENV.fetch("AWS_BUCKET"), prefix: dir
       list.contents.select { |i| i.key.match?(/\.xml$/) }.sort_by(&:key)
         .map do |item|
         content = s3_read item.key
@@ -37,21 +38,46 @@ module Relaton
       end
     end
 
-    def ls(prefix, dirs: true, files: true)
-      resp = @s3.list_objects_v2(bucket: ENV["AWS_BUCKET"],
-                                 prefix: File.join(prefix, "/"),
-                                 delimiter: "/")
-      list = []
-      list += resp.common_prefixes.map(&:prefix) if dirs
-      list += resp.contents.map(&:key) if files
-      list
+    #
+    # List all files with prefix in the bucket
+    #
+    # @param [String] prefix file name prefix
+    #
+    # @return [Array<String>] list of files
+    #
+    def ls(prefix)
+      list_objects(prefix).contents.map(&:key)
+    end
+
+    #
+    # List all directories with prefix in the bucket
+    #
+    # @param [String] prefix directory name prefix
+    #
+    # @return [Array<String>] list of directories
+    #
+    def ls_dir(prefix)
+      list_objects(prefix).common_prefixes.map(&:prefix)
+    end
+
+    #
+    # Request list of objects from AWS S3
+    #
+    # @param [String] prefix prefix
+    #
+    # @return [Seahorse::Client::Response] S3 response
+    #
+    def list_objects(prefix)
+      @s3.list_objects_v2(bucket: ENV.fetch("AWS_BUCKET"),
+                          prefix: File.join(prefix, "/"),
+                          delimiter: "/")
     end
 
     # Delete item
     # @param keys [String, Array<String>] path to file without extension
     def delete(keys)
-      array(keys).map { |f| { key: f } }.each_slice(1000) do |objects|
-        @s3.delete_objects bucket: ENV["AWS_BUCKET"], delete: { objects: objects }
+      RelatonBib.array(keys).map { |f| { key: f } }.each_slice(1000) do |objects|
+        @s3.delete_objects bucket: ENV.fetch("AWS_BUCKET"), delete: { objects: objects }
       end
     end
 
@@ -68,7 +94,7 @@ module Relaton
     # Reads file by a key
     #
     # @param key [String]
-    # @return [String, NilClass]
+    # @return [String, nil]
     def get(key)
       s3_read key
     end
@@ -78,9 +104,9 @@ module Relaton
     # the extension.
     #
     # @param file [String]
-    # @return [String, NilClass]
+    # @return [String, nil]
     def search_ext(file)
-      fs = @s3.list_objects_v2 bucket: ENV["AWS_BUCKET"], prefix: "#{file}."
+      fs = @s3.list_objects_v2 bucket: ENV.fetch("AWS_BUCKET"), prefix: "#{file}."
       fs.contents.first&.key
     end
 
@@ -89,20 +115,12 @@ module Relaton
     # @param hash [String] hash string
     def save_version(fdir, hash)
       file_version = "#{fdir}/version"
-      @s3.head_object bucket: ENV["AWS_BUCKET"], key: file_version
+      @s3.head_object bucket: ENV.fetch("AWS_BUCKET"), key: file_version
     rescue Aws::S3::Errors::NotFound
       s3_write file_version, hash
     end
 
     private
-
-    def array(content)
-      case content
-      when Array then content
-      when nil then []
-      else [content]
-      end
-    end
 
     #
     # Read file form AWS S#
@@ -112,7 +130,7 @@ module Relaton
     # @return [String] content
     #
     def s3_read(key)
-      obj = @s3.get_object bucket: ENV["AWS_BUCKET"], key: key
+      obj = @s3.get_object bucket: ENV.fetch("AWS_BUCKET"), key: key
       obj.body.read
     end
 
@@ -123,7 +141,7 @@ module Relaton
     # @param [String] value
     #
     def s3_write(key, value)
-      @s3.put_object(bucket: ENV["AWS_BUCKET"], key: key, body: value,
+      @s3.put_object(bucket: ENV.fetch("AWS_BUCKET"), key: key, body: value,
                      content_type: "text/plain; charset=utf-8")
     end
   end

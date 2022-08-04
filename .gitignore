@@ -6,3 +6,4 @@ gcache/
 
 .github/awsl-layer-docker/Gemfile
 .github/awsl-layer-docker/libs*
+.rspec_status

@@ -27,7 +27,7 @@ module Relaton
       /^(?<pref>[^(]+)(?=\()/ =~ key.downcase
       prefix_dir = "#{@dir}/#{pref}"
       file = "#{filename(key)}.#{ext(value)}"
-      @storage.save_version prefix_dir, grammar_hash(prefix_dir)
+      @storage.save_version prefix_dir, self.class.grammar_hash(prefix_dir)
       @storage.save file, value
     end
 
@@ -48,7 +48,7 @@ module Relaton
     # @param fdir [String] dir pathe to flover cache
     # @return [Boolean]
     def check_version?(fdir)
-      @storage.get_version(fdir) == grammar_hash(fdir)
+      @storage.get_version(fdir) == self.class.grammar_hash(fdir)
     end
 
     #
@@ -57,10 +57,10 @@ module Relaton
     # @return [<Type>] <description>
     #
     def check_all_versions?
-      files = @storage.ls(@dir, files: false).reduce([]) do |a, fd|
-        next a if check_version?(fd) == grammar_hash(fd)
+      files = @storage.ls_dir(@dir).reduce([]) do |a, fd|
+        next a if check_version?(fd) == self.class.grammar_hash(fd)
 
-        a + @storage.ls(fd, dirs: false)
+        a + @storage.ls(fd)
       end
       @storage.delete files
     end
@@ -68,7 +68,7 @@ module Relaton
     # Reads file by a key
     #
     # @param key [String]
-    # @return [String, NilClass]
+    # @return [String, nil]
     def get(key)
       if @ext == "yml"
         super
