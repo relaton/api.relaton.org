@@ -11,64 +11,63 @@ env:
 jobs:
   build-release:
     runs-on: ubuntu-latest
-#      if: ${{ github.event.release.author.id == 68949242 }}
-#    if: contains(github.event.release.body, 'for Relation Gem v')
+    if: ${{ github.event.release.author.id == 86819909 }}
     steps:
-      - run: echo "123 ${{github.event.release.author.id}}"
-#      - uses: actions/checkout@v2
-#        with:
-#          path: git
+#      - run: echo "123 ${{github.event.release.author.id}}"
+      - uses: actions/checkout@v2
+        with:
+          path: git
 
-#      - name: setup env vars
-#        run: |
-#          RELEASE_BODY="${{github.event.release.body}}"
-#          echo "RELEASE_BODY=$RELEASE_BODY" >> ${GITHUB_ENV}
-#          RELEASE_TAG_NAME="${{github.event.release.tag_name}}"
-#          echo "RELEASE_TAG_NAME=$RELEASE_TAG_NAME" >> ${GITHUB_ENV}
-#          GEM_VERSION=$(echo "$RELEASE_BODY" | grep -Po '(?<=v)[^;]+')
-#          echo "GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
-#          echo "RELATION_GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
-#
-#          AWS_LAMBDA="${GITHUB_WORKSPACE}/AWS_LAMBDA"
-#          mkdir -p "${AWS_LAMBDA}"
-#          echo "AWS_LAMBDA=$AWS_LAMBDA" >> ${GITHUB_ENV}
-#          echo "AWSL_SRC_ZIP=${AWS_LAMBDA}/aws-lambda-src.zip" >> ${GITHUB_ENV}
-#          echo "AWSL_LAYER_ZIP=${AWS_LAMBDA}/aws-lambda-layer.zip" >> ${GITHUB_ENV}
-#
-#      - name: setup ruby+install
-#        uses: ruby/setup-ruby@v1.75.0
-#        with:
-#          bundler-cache: false
-#          ruby-version: 2.7
-#
-#      - name: build "-api" source
-#        working-directory: git
-#        run: |
-#          zip -r ${AWSL_SRC_ZIP} lib
-#
-#      - name: build "-layer"
-#        working-directory: git/.github/awsl-layer-docker
-#        run: |
-#          ls -all
-#          bash build.sh
-#          cp libs.zip $AWSL_LAYER_ZIP
-#
-#      - name: upload lambda layer to current release
-#        uses: softprops/action-gh-release@v1
-#        with:
-#          tag_name: ${{env.RELEASE_TAG_NAME}}
-#          files: |
-#            ${{env.AWSL_SRC_ZIP}}
-#            ${{env.AWSL_LAYER_ZIP}}
-#
-#      - name: dispatch "infrastructure-lambda-api"
-#        uses: peter-evans/repository-dispatch@v1
-#        with:
-#          token: ${{ env.GITHUB_PUSH_TOKEN }}
-#          repository: relaton/infrastructure-lambda-api
-#          event-type: ${{ github.repository }}
-#          client-payload: >-
-#            {
-#              "workflow": "on-api-release.yml",
-#              "api_tag_name": "${{env.RELEASE_TAG_NAME}}"
-#            }
+      - name: setup env vars
+        run: |
+          RELEASE_BODY="${{github.event.release.body}}"
+          echo "RELEASE_BODY=$RELEASE_BODY" >> ${GITHUB_ENV}
+          RELEASE_TAG_NAME="${{github.event.release.tag_name}}"
+          echo "RELEASE_TAG_NAME=$RELEASE_TAG_NAME" >> ${GITHUB_ENV}
+          GEM_VERSION=$(echo "$RELEASE_BODY" | grep -Po '(?<=v)[^;]+')
+          echo "GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
+          echo "RELATION_GEM_VERSION=$GEM_VERSION" >> ${GITHUB_ENV}
+
+          AWS_LAMBDA="${GITHUB_WORKSPACE}/AWS_LAMBDA"
+          mkdir -p "${AWS_LAMBDA}"
+          echo "AWS_LAMBDA=$AWS_LAMBDA" >> ${GITHUB_ENV}
+          echo "AWSL_SRC_ZIP=${AWS_LAMBDA}/aws-lambda-src.zip" >> ${GITHUB_ENV}
+          echo "AWSL_LAYER_ZIP=${AWS_LAMBDA}/aws-lambda-layer.zip" >> ${GITHUB_ENV}
+
+      - name: setup ruby+install
+        uses: ruby/setup-ruby@v1.75.0
+        with:
+          bundler-cache: false
+          ruby-version: 2.7
+
+      - name: build "-api" source
+        working-directory: git
+        run: |
+          zip -r ${AWSL_SRC_ZIP} lib
+
+      - name: build "-layer"
+        working-directory: git/.github/awsl-layer-docker
+        run: |
+          ls -all
+          bash build.sh
+          cp libs.zip $AWSL_LAYER_ZIP
+
+      - name: upload lambda layer to current release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{env.RELEASE_TAG_NAME}}
+          files: |
+            ${{env.AWSL_SRC_ZIP}}
+            ${{env.AWSL_LAYER_ZIP}}
+
+      - name: dispatch "infrastructure-lambda-api"
+        uses: peter-evans/repository-dispatch@v1
+        with:
+          token: ${{ env.GITHUB_PUSH_TOKEN }}
+          repository: relaton/infrastructure-lambda-api
+          event-type: ${{ github.repository }}
+          client-payload: >-
+            {
+              "workflow": "on-api-release.yml",
+              "api_tag_name": "${{env.RELEASE_TAG_NAME}}"
+            }
