@@ -187,7 +187,7 @@ GEM
       thor
     public_suffix (4.0.7)
     racc (1.6.0)
-    rack (2.2.4)
+    rack (2.2.6.2)
     rdf (3.2.8)
       link_header (~> 0.0, >= 0.0.8)
     rdf-aggregate-repo (3.2.1)
