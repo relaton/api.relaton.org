@@ -35,7 +35,7 @@ jobs:
           echo "AWSL_LAYER_ZIP=${AWS_LAMBDA}/aws-lambda-layer.zip" >> ${GITHUB_ENV}
 
       - name: setup ruby+install
-        uses: ruby/setup-ruby@v1.75.0
+        uses: ruby/setup-ruby@v1
         with:
           bundler-cache: false
           ruby-version: 3.2
