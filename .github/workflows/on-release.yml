@@ -34,6 +34,7 @@ jobs:
           echo "AWSL_SRC_ZIP=${AWS_LAMBDA}/aws-lambda-src.zip" >> ${GITHUB_ENV}
           echo "AWSL_LAYER_ZIP=${AWS_LAMBDA}/aws-lambda-layer.zip" >> ${GITHUB_ENV}
 
+      - run: sudo apt-get install libtool
       - name: setup ruby+install
         uses: ruby/setup-ruby@v1
         with:
