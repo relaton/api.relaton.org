@@ -1,12 +1,9 @@
-FROM lambci/lambda:20210129-build-ruby2.7 as builder
+FROM public.ecr.aws/lambda/ruby:4.0 as builder
 
-ADD Gemfile .
-RUN yum install -y libyaml-devel
+COPY Gemfile Gemfile.lock ./
 RUN bundle config set path "/lambda"
 RUN bundle install --without=development --jobs 4 --retry 3
 
-FROM lambci/yumda:2 as yumda
-RUN yum install -y libyaml
-
+FROM public.ecr.aws/lambda/ruby:4.0
 COPY --from=builder "/lambda/ruby" "/lambda/opt/ruby/gems"
 

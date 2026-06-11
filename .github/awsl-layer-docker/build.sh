@@ -1,7 +1,7 @@
 #!/bin/sh
 
 rm -Rf ./libs
-cp ../../Gemfile Gemfile
+cp ../../Gemfile Gemfile && cp ../../Gemfile.lock Gemfile.lock
 
 docker build --no-cache -t lambda .
 id=$(docker create lambda)
