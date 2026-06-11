@@ -8,8 +8,8 @@ module Relaton
       @registry = Relaton::Registry.instance
       @db = open_cache_biblio(global_cache, type: :global)
       @local_db = open_cache_biblio(local_cache, type: :local)
-      # @static_db = open_cache_biblio "static_cache"
       @queues = {}
+      @semaphore = Mutex.new
     end
 
     private

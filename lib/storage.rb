@@ -76,7 +76,7 @@ module Relaton
     # Delete item
     # @param keys [String, Array<String>] path to file without extension
     def delete(keys)
-      RelatonBib.array(keys).map { |f| { key: f } }.each_slice(1000) do |objects|
+      Array(keys).map { |f| { key: f } }.each_slice(1000) do |objects|
         @s3.delete_objects bucket: ENV.fetch("AWS_BUCKET"), delete: { objects: objects }
       end
     end

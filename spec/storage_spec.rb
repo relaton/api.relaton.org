@@ -3,6 +3,7 @@ RSpec.describe Relaton::Storage do
     let(:s3) { storage.instance_variable_get :@s3 }
 
     before(:each) do
+      allow(ENV).to receive(:fetch).with("AWS_NEW_RETRIES_2026", any_args).and_return "false"
       Singleton.__init__ Relaton::Storage
     end
 
