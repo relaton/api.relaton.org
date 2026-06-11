@@ -42,7 +42,9 @@ module Relaton
         code = params["code"]&.strip
         return bad_request("Parameter 'code' is required.") if code.nil? || code.empty?
 
-        item = Finder.instance.fetch(normalize(code), params["year"]&.strip, extract_opts(params))
+        year = params.key?("year") ? normalize(params["year"]) : nil
+        year = nil if year&.empty?
+        item = Finder.instance.fetch(normalize(code), year, extract_opts(params))
         return not_found("Document not found.") unless item
 
         response item.to_xml(bibdata: true), type: "text/xml"

@@ -163,6 +163,24 @@ describe Relaton::Api do
         resp = described_class.send(:fetch, event)
         expect(resp[:statusCode]).to eq 200
       end
+
+      it "normalizes whitespace in year" do
+        event = { "queryStringParameters" => { "code" => "ISO 19115-2", "year" => "\u00A02019\u00A0" } }
+        item = double("item")
+        expect(item).to receive(:to_xml).with(bibdata: true).and_return "<xml/>"
+        expect(finder).to receive(:fetch).with("ISO 19115-2", "2019", {}).and_return item
+        resp = described_class.send(:fetch, event)
+        expect(resp[:statusCode]).to eq 200
+      end
+
+      it "converts blank year to nil" do
+        event = { "queryStringParameters" => { "code" => "ISO 19115-2", "year" => "  " } }
+        item = double("item")
+        expect(item).to receive(:to_xml).with(bibdata: true).and_return "<xml/>"
+        expect(finder).to receive(:fetch).with("ISO 19115-2", nil, {}).and_return item
+        resp = described_class.send(:fetch, event)
+        expect(resp[:statusCode]).to eq 200
+      end
     end
   end
 
