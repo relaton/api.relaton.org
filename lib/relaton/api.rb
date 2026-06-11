@@ -53,7 +53,8 @@ module Relaton
       end
 
       def normalize(code)
-        code.gsub(/[\s\u00a0]+/, " ").strip
+        code.gsub("\u2014", "-").gsub("\u2013", "-")
+            .gsub(/[\p{Z}\u00a0]+/, " ").strip
       end
 
       def extract_opts(params)

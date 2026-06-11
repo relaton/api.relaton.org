@@ -154,6 +154,15 @@ describe Relaton::Api do
         resp = described_class.send(:fetch, event)
         expect(resp[:statusCode]).to eq 200
       end
+
+      it "normalizes em-dash in code" do
+        event = { "queryStringParameters" => { "code" => "ISO 19160\u20144" } }
+        item = double("item")
+        expect(item).to receive(:to_xml).with(bibdata: true).and_return "<xml/>"
+        expect(finder).to receive(:fetch).with("ISO 19160-4", nil, {}).and_return item
+        resp = described_class.send(:fetch, event)
+        expect(resp[:statusCode]).to eq 200
+      end
     end
   end
 
@@ -168,6 +177,22 @@ describe Relaton::Api do
 
     it "leaves clean input unchanged" do
       expect(Relaton::Api.send(:normalize, "ISO 9000:2015")).to eq "ISO 9000:2015"
+    end
+
+    it "normalizes em-dash to hyphen" do
+      expect(Relaton::Api.send(:normalize, "ISO 19160\u20144")).to eq "ISO 19160-4"
+    end
+
+    it "normalizes en-dash to hyphen" do
+      expect(Relaton::Api.send(:normalize, "ISO 19160\u20134")).to eq "ISO 19160-4"
+    end
+
+    it "normalizes thin space to regular space" do
+      expect(Relaton::Api.send(:normalize, "ISO\u200919115-2")).to eq "ISO 19115-2"
+    end
+
+    it "handles mixed dashes and spaces" do
+      expect(Relaton::Api.send(:normalize, "\u00A0ISO\u201419115\u20132\u00A0")).to eq "ISO-19115-2"
     end
   end
 
